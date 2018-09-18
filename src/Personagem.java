@@ -7,6 +7,7 @@ public class Personagem {
 	protected int xp; // experiencia
 	protected int level;
 	/***/ // ideia: vetor de atributos
+	/* protected int attributes[]; */
 	protected int forca;
 	protected int destreza;
 	protected int agilidade;
