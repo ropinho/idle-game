@@ -1,7 +1,7 @@
 public class Espadachim extends Personagem {
 
-  public Espadachim(String n){
-    super(n);
+  public Espadachim(String nome){
+    super(nome);
   }
-  
+
 }
