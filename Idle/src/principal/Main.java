@@ -1,14 +1,11 @@
-package Main;
-import Personagem.Arqueiro;
-import Personagem.Espadachim;
-import Personagem.Mago;
-import Personagem.Personagem;
+package principal;
+import personagem.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        int cmd;
+        int idx;
 
         System.out.print("Criar personagem.\nDigite o nome: ");
         String nome = in.next();
@@ -32,17 +29,20 @@ public class Main {
             showAttributeMenu(hero);
 
             System.out.print("Atributo: ");
-            cmd = in.nextInt();
+            idx = in.nextInt();
 
             System.out.print("+Pontos: ");
             int numeroDePontos = in.nextInt(); // numero de pontos
 
-            if (cmd == 1) hero.incrForca(numeroDePontos);
+            hero.incrAtributo(idx-1, numeroDePontos);
+            
+            /*if (cmd == 1) hero.incrForca(numeroDePontos);
             if (cmd == 2) hero.incrDestreza(numeroDePontos);
             if (cmd == 3) hero.incrAgilidade(numeroDePontos);
             if (cmd == 4) hero.incrInteligencia(numeroDePontos);
             if (cmd == 5) hero.incrSorte(numeroDePontos);
-            if (cmd == 6) hero.incrVitalidade(numeroDePontos);
+            if (cmd == 6) hero.incrVitalidade(numeroDePontos);*/
+            
             pts -= numeroDePontos;
         }
     }

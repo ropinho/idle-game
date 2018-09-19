@@ -1,4 +1,4 @@
-package Personagem;
+package personagem;
 
 public class Personagem {
 
@@ -59,6 +59,9 @@ public class Personagem {
     
     
     /* incrementadores de atributos */
+    public void incrAtributo(int index, int value){
+        atributos[index] += value;
+    }
     public void incrForca(int i){ atributos[0]+=i; }
     public void incrDestreza(int i){ atributos[1]+=i; }
     public void incrAgilidade(int i){ atributos[2]+=i; }

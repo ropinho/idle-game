@@ -1,4 +1,4 @@
-package Item;
+package item;
 
 public class Item {
 	/* classe item tem os atributos comuns aos Itens como:
