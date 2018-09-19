@@ -1,4 +1,5 @@
-import idle.item.Item;
+package Item;
+
 /*
  * A idéia é que a Mochila possa ser expandida de acordo com
  * a mudança de nivel (evolução), daí */
