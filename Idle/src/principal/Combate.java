@@ -15,6 +15,6 @@ public class Combate {
      * p1 ataca p2 */
     public static void atack(Personagem p1, Personagem p2) {
         /* teste básico*/
-        if ()
+        
     }
 }
