@@ -27,8 +27,7 @@ public class Personagem {
      * 4 - Sorte        (Luck)
      * 5 - Vitalidade   (Vitality) */    
    
-    public Personagem(String nome){
-        
+    public Personagem(String nome){        
         this.nome = nome;
         this.hp = 400;
         this.xp = 0;
@@ -79,7 +78,6 @@ public class Personagem {
     
     //public int getSkill(){return skill;}
     //public void setSkill(int skill){this.skill = skill;}
-    
     
     /* incrementador de atributos */
     public void incrAtributo(int index, int value){
