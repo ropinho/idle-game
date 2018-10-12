@@ -1,4 +1,4 @@
-package item;
+package util;
 
 /*
  * A idéia é que a Mochila possa ser expandida de acordo com

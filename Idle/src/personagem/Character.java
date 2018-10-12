@@ -1,7 +1,5 @@
 package personagem;
 
-import item.Bag;
-
 public abstract class Character {
 
     // Atributos comuns a todos os personagens
@@ -15,7 +13,6 @@ public abstract class Character {
     protected int defense;
     protected int power;
     //protected Skill[] skill = new Skill[2];
-    protected Bag bag;
     protected int[] attributes = new int[6];
     /*
      * Atributos possui 6 espaços sendo estes disposto em:
@@ -34,8 +31,6 @@ public abstract class Character {
         for (int i=0; i<=5; i++)
             this.attributes[i] = 100;
         this.power = 100;
-        this.bag = new Bag(1);
-        //this.skill = 0;
     }
 
     /* getters and stters */
@@ -65,9 +60,6 @@ public abstract class Character {
 
     public int getDefesa() {return defense;}
     public void setDefesa(int d) {this.defense = d;}
-
-    public Bag getBag() {return bag;}
-    public void setBag(Bag m) {this.bag = m;}
     
     public int getPower(){return power;}
     public int setPower(int p){return this.power = p;}
