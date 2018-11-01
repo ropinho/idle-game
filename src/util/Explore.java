@@ -1,5 +1,7 @@
 package util;
 
+import java.io.IOException;
+
 import personagem.Enemy;
 
 public class Explore extends java.lang.Thread {
@@ -13,8 +15,12 @@ public class Explore extends java.lang.Thread {
 			System.out.println("Explorando...");
 			
 			if (++i % 5 == 0) {
-				enemy = Creator.generateEnemy();
-				System.out.printf("Você encontrou um inimigo %s\nBATALHA!\n", enemy.getName());
+				try {
+					enemy = Creator.generateEnemy();
+					System.out.printf("Você encontrou um inimigo %s\nBATALHA!\n", enemy.getName());
+				} catch (IOException ioe) {
+					System.out.printf("Impossivel gerar inimigo: %s", ioe.toString());
+				}
 			}
 			
 			try {

@@ -1,10 +1,15 @@
 package util;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 import personagem.*;
-import java.util.Random;
-import java.io.FileReader;
-import java.io.BufferedReader;
 
 public abstract class Creator {
 
@@ -48,7 +53,19 @@ public abstract class Creator {
     /*
      * Gerar um inimigo randomicamente a partir de um arquivo
      */
-    public static Enemy generateEnemy() {
+    public static Enemy generateEnemy() throws IOException {
+    	
+    	Reader reader = Files.newBufferedReader(Paths.get("resources/enemies.csv"));
+    	CSVReader csvreader = new CSVReaderBuilder(reader).withSkipLines(1).build();
+    	System.out.println("Obj CSVReader e CSVReaderBuilder");
+    	
+    	List<String[]> enemies = csvreader.readAll();
+    	System.out.println("Lista criada");
+    	
+    	for (String[] enemy : enemies) {
+    		System.out.printf("Nome: %s\tNivel: %s\n", enemy[0], enemy[1]);
+    	}
+    	
     	return new Enemy("Ogro de Lama", 1);
     }
     
