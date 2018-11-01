@@ -15,7 +15,8 @@ public class Test {
     
     Equipment equipment = new Equipment();
     
-    equipment.loaderEquipment();
+    equipment.equipmentLoader();
+    
  
     // criando o personagem (Heŕoi)
     System.out.printf("\nNome do personagem: ");
@@ -25,13 +26,14 @@ public class Test {
     String classechar = in.next();
     Hero hero = Creator.createHero(classechar, myname); // o parametro "a" faz referencia a Arqueiro
 
-   
+    equipment.equipCharacter(hero, 5);
     
+    hero.showAttributes();
     
     // distribuição dos pontos de atributos iniciais = 50
     Creator.distributePoints(50, hero);
 
-
+    
     System.out.println("Seu personagem:");
     System.out.println("Nome: " + hero.getName());
     hero.showAttributes();

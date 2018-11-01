@@ -50,13 +50,14 @@ public class Equipment {
 					+ "\n -> Def: " + equipment[index][3]
 					);
 			*/
+			
+			// chamar metodo showSetEquipment(index);
 		}
-		
-		
-		
+			
 		
 	}	
 
+	
 	public void equipmentLoader() throws IOException{
 			
 		File file = new File("src/item/dados.csv");
@@ -76,6 +77,11 @@ public class Equipment {
 		}
 	}
 
-
+	
+	public void showSetEquipment(int index) {
+		String[][] Showequipment = new String[5][4];
+		
+		
+	}
 
 }
