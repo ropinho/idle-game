@@ -1,4 +1,4 @@
-package util;
+package item;
 
 import personagem.*;
 import java.util.Scanner;

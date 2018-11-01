@@ -1,16 +1,22 @@
 package test;
 
+import java.io.IOException;
+import java.util.Scanner;
+
+import item.Equipment;
 import personagem.Enemy;
 import personagem.Hero;
-import util.Creator;
+import item.Creator;
 
 
 public class Test {
-  public static void main(String args[]){
+  public static void main(String args[]) throws IOException{
     Scanner in = new Scanner(System.in);
     
-    Equipment test = new Equipment();
-   
+    Equipment equipment = new Equipment();
+    
+    equipment.loaderEquipment();
+ 
     // criando o personagem (Heŕoi)
     System.out.printf("\nNome do personagem: ");
     String myname = in.next();
@@ -19,7 +25,7 @@ public class Test {
     String classechar = in.next();
     Hero hero = Creator.createHero(classechar, myname); // o parametro "a" faz referencia a Arqueiro
 
-    test.equiparPersonagem(hero);
+   
     
     
     // distribuição dos pontos de atributos iniciais = 50
