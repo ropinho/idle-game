@@ -4,20 +4,61 @@ package item;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 import personagem.Hero;
 
 public class Equipment {
+	private String[][] equipment = new String[3][4];
 	
-	public void equiparPersonagem(Hero person){
-		person.showAttributes();
+	public void equipCharacter(Hero hero, int level){
+		
+		Random random = new Random();
+		
+		int[] optionsEquip = new int[3]; // armazena o indices dos esquipamentos condizentes com o lvl
+		
+		int set = 1; //Condicao para continuar
+		
+		
+		for(int i=0; i<3; i++){
+			
+			//Converte a string em int
+			int equipLevel = Integer.parseInt(equipment[i][1]);
+			
+			
+			/*Verifica se o nivel do personagem e o mesmo do equip
+			 * se for o mesmo nivel armazena o indice daquele equip
+			 * */
+			if(level == equipLevel) {
+				optionsEquip[i] = i;
+				set = 0;
+			}
+		}
+		if(set == 0) {
+			int index = random.nextInt(3);
+			int k = 0;
+			
+			for(int i=2; i<4; i++){
+				hero.incrAttribute(k, Integer.parseInt(equipment[index][i]));
+				k++;
+			}
+			/*
+			System.out.println("\nSou personagem foi equipado com\n -> " + equipment[index][0]
+					+ "\n -> Lvl: " + equipment[index][1]
+					+ "\n -> Atack: " + equipment[index][2] 
+					+ "\n -> Def: " + equipment[index][3]
+					);
+			*/
+		}
+		
+		
+		
 		
 	}	
 
 	public void equipmentLoader() throws IOException{
-		String[][] equipment = new String[3][3];
-		
+			
 		File file = new File("src/item/dados.csv");
 		
 		try {
@@ -33,12 +74,8 @@ public class Equipment {
 		} catch(FileNotFoundException e){
 			System.out.println("Erro ao ler o arquivo");
 		}
-		
-		for(int l=0; l<3; l++) {
-			for(int j =0; j<3; j++) {
-				System.out.printf("%s | ",equipment[l][j]);
-			}
-			System.out.println();
-		}
 	}
+
+
+
 }
