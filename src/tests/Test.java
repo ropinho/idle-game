@@ -36,11 +36,8 @@ public class Test {
     if (r != 'y') {
     	System.out.println("Saindo do jogo\nEXIT_SUCESS");
     } else {
-    	
     	new Explore().start();
-    	
     }
-    
     
   }
 }

@@ -2,7 +2,7 @@ package personagem;
 
 //import item.Equipment;
 
-public class Hero extends Character {
+public class Hero extends Character implements Job {
 
     //Equipment equip;
 
@@ -11,5 +11,9 @@ public class Hero extends Character {
     }
 
     
+    @Override
+    public void calculatePower() {
+    	
+    }
 
 }

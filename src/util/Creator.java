@@ -31,11 +31,12 @@ public abstract class Creator {
       while (points > 0) {
         System.out.printf("\nVocê ainda possui %d pontos de atributos para distribuir.\n", points);
         System.out.printf("Digite o valor para incrementar e em seguida o atributo:\n");
-        System.out.println("[-1] Cancelar operação\n");
+        System.out.printf ("--- POWER = %d", hero.getPower());
+        System.out.println("[0] Cancelar operação");
         hero.showAttributes();
         System.out.printf("Atributo: "); int aIndex = in.nextInt();
         System.out.printf("Valor: "); int value = in.nextInt();
-        if (aIndex >= 0 && value >= 0) {
+        if (aIndex > 0 && value > 0) {
         	if (points-value >= 0){
         		hero.incrAttribute(aIndex-1, value);
         		points = points - value;
@@ -43,6 +44,7 @@ public abstract class Creator {
         		hero.incrAttribute(aIndex-1, points);
         		points = 0;
         	}
+        	hero.calculatePower();
         } else {
         	break;
         }
