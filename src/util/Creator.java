@@ -1,21 +1,18 @@
 package util;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.Math;
 import personagem.*;
 
 public abstract class Creator {
 
-    // cria personagem de acordo com a classe escolhida
-    // (!) Atenção para NullPointerException em caso de classe ser diferente de
-    // dos 3 caracteres disponíveis
+    /* cria personagem de acordo com a classe escolhida */
     public static Hero createHero(String classe, String name) throws NullPointerException {
         if (classe.equals("s")) return (new Swordsman(name));
         if (classe.equals("a")) return (new Arrow(name));
@@ -57,18 +54,37 @@ public abstract class Creator {
      */
     public static Enemy generateEnemy() throws IOException {
     	
-    	Reader reader = Files.newBufferedReader(Paths.get("resources/enemies.csv"));
-    	CSVReader csvreader = new CSVReaderBuilder(reader).withSkipLines(1).build();
-    	System.out.println("Obj CSVReader e CSVReaderBuilder");
+    	BufferedReader buff;
+    	Enemy inimigo;
+    	List<String[]> listaDeInimigos = new ArrayList<String[]>();
+    	String linha;
+    	String[] dados =  new String[2];
     	
-    	List<String[]> enemies = csvreader.readAll();
-    	System.out.println("Lista criada");
-    	
-    	for (String[] enemy : enemies) {
-    		System.out.printf("Nome: %s\tNivel: %s\n", enemy[0], enemy[1]);
+    	try {
+    		// abrir arquivo
+    		buff = new BufferedReader(new FileReader("src/resources/enemies.csv"));
+    		
+    		linha = buff.readLine();
+    		
+    		 while (linha != null) {
+    			linha = buff.readLine();
+    			if (linha == null) break;
+    			dados = linha.split(",");
+    			listaDeInimigos.add(dados);
+    		}
+    		
+    		buff.close();
+    		
+    	} catch (FileNotFoundException e) {
+    		System.out.printf("Erro: %s", e.toString());
     	}
     	
-    	return new Enemy("Ogro de Lama", 1);
+    	// pega um valor aleatorio dentro do escopo do tamanho da lista
+    	int index = 1 + (int) (Math.random() * (listaDeInimigos.size()-1) );
+    
+    	inimigo = new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
+    	
+    	return inimigo;
     }
     
     

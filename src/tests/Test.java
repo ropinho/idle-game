@@ -6,8 +6,10 @@ import util.Explore;
 import personagem.*;
 
 public class Test {
+  private static Scanner in;
+
   public static void main(String args[]){
-    Scanner in = new Scanner(System.in);
+	in = new Scanner(System.in);
 
     // criando o personagem (Heŕoi)
     System.out.printf("\nNome do personagem: ");
