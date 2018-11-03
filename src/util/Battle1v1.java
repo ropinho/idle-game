@@ -12,37 +12,54 @@ public class Battle1v1 implements Battle {
 		this.FIGHTER_2 = c2;
 	}
 	
+	
+	
 	@Override
 	public void start() {
 		int damage;
-		Character atacante, atacado;
+		Character atk, def, aux;
 		
 		System.out.printf("BATTLE!! %s VS %s \n", FIGHTER_1.getName(), FIGHTER_2.getName());
+		
+		atk = FIGHTER_1;
+		def = FIGHTER_2;
+		
 		while (FIGHTER_1.getHp() > 0 && FIGHTER_2.getHp() > 0) {
 			
+			damage = atk.atack(def);
+			def.setHp(def.getHp() - damage);
+			Console.printAtackLog(atk, def, damage);
+			
 			try {
-				damage = FIGHTER_1.atack(FIGHTER_2);
-				FIGHTER_2.setHp(FIGHTER_2.getHp() -damage);
-				System.out.printf("%s(%d) causou %d de dano em %s(%d)\n", FIGHTER_1.getName(), FIGHTER_1.getHp(),damage, FIGHTER_2.getName(), FIGHTER_2.getHp());
-				
-				Thread.sleep(1000);
-				
-				damage = FIGHTER_2.atack(FIGHTER_1);
-				FIGHTER_1.setHp(FIGHTER_1.getHp() -damage);
-				System.out.printf("%s(%d) causou %d de dano em %s(%d)\n", FIGHTER_2.getName(), FIGHTER_2.getHp(),damage, FIGHTER_1.getName(), FIGHTER_1.getHp());
-				
-				Thread.sleep(1000);
-				
+				Thread.sleep(1500);
 			} catch (InterruptedException ie) {
 				System.err.println(ie.toString());
 			}
+			
+			// troca
+			aux = atk;
+			atk = def;
+			def = aux;
 		}
+		
 	}
-	
 	
 	@Override
 	public void finish() {
 		
+	}
+	
+	@Override
+	public Character winner() {
+		// checa quem terminou com o maior hp e printa no console
+		Character winner = null;
+		
+		if (FIGHTER_1.getHp() > FIGHTER_2.getHp())
+			winner = FIGHTER_1;
+		else if (FIGHTER_2.getHp() > FIGHTER_1.getHp())
+			winner = FIGHTER_2;
+		
+		return winner;
 	}
 	
 }

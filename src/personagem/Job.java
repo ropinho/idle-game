@@ -7,5 +7,7 @@ public interface Job {
 	public void calculatePower();
 	
 	public void calculateAtack();
+	
+	public void calculateDefense();
 
 }

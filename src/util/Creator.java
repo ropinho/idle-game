@@ -63,18 +63,17 @@ public abstract class Creator {
     public static Enemy generateEnemy() throws IOException {
     	
     	BufferedReader buff;
-    	Enemy inimigo;
     	List<String[]> listaDeInimigos = new ArrayList<String[]>();
     	String linha;
     	String[] dados =  new String[2];
     	
     	try {
-    		// abrir arquivo
-    		buff = new BufferedReader(new FileReader("src/resources/enemies.csv"));
-    		
+    		// abre o arquivo
+    		buff = new BufferedReader(new FileReader("data/enemies.csv"));
+    		// lê a primeira linha, essa linha é de cabeçalho e é ignorada
     		linha = buff.readLine();
     		
-    		 while (linha != null) {
+    		while (linha != null) {
     			linha = buff.readLine();
     			if (linha == null) break;
     			dados = linha.split(",");
@@ -88,11 +87,10 @@ public abstract class Creator {
     	}
     	
     	// pega um valor aleatorio dentro do escopo do tamanho da lista
-    	int index = 1 + (int) (Math.random() * (listaDeInimigos.size()-1) );
+    	int index = (int) (Math.random() * (listaDeInimigos.size()-1) );
     
-    	inimigo = new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
-    	
-    	return inimigo;
+    	return new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
+    
     }
     
     
