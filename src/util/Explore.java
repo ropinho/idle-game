@@ -1,10 +1,16 @@
 package util;
 
 import java.io.IOException;
-
-import personagem.Enemy;
+import personagem.*;
+import util.Battle1v1;
 
 public class Explore extends java.lang.Thread {
+	
+	private Hero HERO;
+	
+	public Explore (Hero h) {
+		this.HERO = h;
+	}
 	
 	@Override
 	public void run() {
@@ -12,24 +18,27 @@ public class Explore extends java.lang.Thread {
 		Enemy enemy;
 		
 		while(true) {
-			System.out.println("Explorando...");
+			System.out.print("Explorando...\n");
 			
-			if (++i % 5 == 0) {
+			if (++i % 3 == 0) {
 				try {
 					enemy = Creator.generateEnemy();
-					System.out.printf("Você encontrou um inimigo %s\nBATALHA!\n", enemy.getName());
+					System.out.printf("%s encontrou um inimigo %s\n", HERO.getName(), enemy.getName());
+					
+					new Battle1v1(HERO, enemy).start();
+					
 				} catch (IOException ioe) {
 					System.out.printf("Impossivel gerar inimigo: %s", ioe.toString());
 				}
 			}
 			
 			try {
-				Thread.sleep(600);
+				Thread.sleep(500);
 			} catch (InterruptedException ie) {
 				System.out.println(ie);
 			}
 			
-			if (i==20) break;
+			if (i==10) break;
 		}
 	}
 	

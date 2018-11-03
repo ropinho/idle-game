@@ -9,41 +9,49 @@ import java.util.List;
 import java.util.Scanner;
 import java.lang.Math;
 import personagem.*;
+import util.Console;
 
 public abstract class Creator {
 
-    /* cria personagem de acordo com a classe escolhida */
-    public static Hero createHero(String classe, String name) throws NullPointerException {
-        if (classe.equals("s")) return (new Swordsman(name));
-        if (classe.equals("a")) return (new Arrow(name));
-        if (classe.equals("m")) return (new Magician(name));
+    private static Scanner in;
 
-        System.out.println("Error on Create Hero: Class not exists!");
-        return null;
+
+	/* cria personagem de acordo com a classe escolhida */
+    public static Hero createHero(String classe, String name) throws NullPointerException {
+    	if ( classe.equals("s") || classe.equals("a") || classe.equals("m")) {
+    		if (classe.equals("s")) return (new Swordsman(name));
+    		if (classe.equals("a")) return (new Arrow(name));
+    		if (classe.equals("m")) return (new Magician(name));
+    	}
+    	return null;
     }
 
 
     public static void distributePoints(int points, Hero hero) {
-      Scanner in = new Scanner(System.in);
+      in = new Scanner(System.in);
       while (points > 0) {
         System.out.printf("\nVocê ainda possui %d pontos de atributos para distribuir.\n", points);
-        System.out.printf("Digite o valor para incrementar e em seguida o atributo:\n");
-        System.out.printf ("--- POWER = %d", hero.getPower());
-        System.out.println("[0] Cancelar operação");
-        hero.showAttributes();
+        System.out.printf("Digite o indice do atributo para incrementar e em seguida o valor:\n");
+        System.out.println("\n[0] Cancelar operação");
+        Console.printAttributesOf(hero);
         System.out.printf("Atributo: "); int aIndex = in.nextInt();
-        System.out.printf("Valor: "); int value = in.nextInt();
-        if (aIndex > 0 && value > 0) {
-        	if (points-value >= 0){
-        		hero.incrAttribute(aIndex-1, value);
-        		points = points - value;
+        if (aIndex > 0) {
+        	System.out.printf("Valor: "); int value = in.nextInt();
+        	if (value > 0) {
+        		if (points-value >= 0){
+        			hero.incrAttribute(aIndex-1, value);
+        			points = points - value;
+        		} else {
+        			hero.incrAttribute(aIndex-1, points);
+        			points = 0;
+        		}
+        		hero.calculatePower();
         	} else {
-        		hero.incrAttribute(aIndex-1, points);
-        		points = 0;
+        		break;
         	}
-        	hero.calculatePower();
         } else {
-        	break;
+        	if (aIndex == 0) break;
+        	else continue;
         }
       }
     }
