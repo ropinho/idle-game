@@ -13,7 +13,7 @@ public class Test {
 
     // criando o personagem (Heŕoi)
     System.out.printf("\nNome do personagem: ");
-    String myname = in.next();
+    String myname = in.nextLine();
     System.out.printf("\nClasse do Herói: \n");
     System.out.printf("[a] Arrow\n[s] Swordsman\n[m] Magician\nDigite: ");
     String classechar = in.next();
@@ -36,9 +36,9 @@ public class Test {
     char r = resp.charAt(0);
     
     if (r != 'y') {
-    	System.out.println("Saindo do jogo\nEXIT_SUCESS");
+    	System.out.println("Encerrando o jogo");
     } else {
-    	new Explore().start();
+    	new Explore(hero).start();
     }
     
   }

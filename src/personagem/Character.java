@@ -14,15 +14,7 @@ public abstract class Character {
     protected int power;
     //protected Skill[] skill = new Skill[2];
     protected int[] attributes = new int[6];
-    protected String[] attrNames = new String[6];
-    /*
-     * Atributos possui 6 espaços sendo estes disposto em:
-     * 0 - Força        (Force)
-     * 1 - Destreza     (Dexterity)
-     * 2 - Agilidade    (Agility)
-     * 3 - Inteligencia (Intelligence)
-     * 4 - Sorte        (Luck)
-     * 5 - Vitalidade   (Vitality) */
+    protected final String[] attrNames = new String[6];
 
     public Character(String name){
         this.name = name;
@@ -52,6 +44,8 @@ public abstract class Character {
 
     public int getHp(){return hp;}
     public void setHp(int hp){this.hp = hp;}
+    
+    public String[] getAttrNames() {return this.attrNames;}
 
     public int[] getAttributes(){return attributes;}
     public int[] setAttributes(){return attributes;}
@@ -75,6 +69,7 @@ public abstract class Character {
     public void incrAttribute(int index, int value){
         attributes[index] += value;
     }
+    
 
     public void showAttributes() {
         for (int i=0; i<6; i++){
@@ -85,5 +80,14 @@ public abstract class Character {
     // aumenta de nível:
     public void levelUp(){
         this.level++;
+    }
+    
+    // battle methods
+    
+    public int atack(Character enemy) {
+    	/* Retorna o dano causado no inimigo
+    	 * Teste: o dano é o ataque menos 10% da defesa do inimmigo */
+    	int damage = this.getAtack() - (int) (enemy.getDefesa() / 10);
+    	return damage;
     }
 }
