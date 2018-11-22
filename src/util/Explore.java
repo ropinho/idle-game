@@ -49,6 +49,7 @@ public class Explore extends java.lang.Thread {
 				System.out.println(ie);
 			}
 			
+			// limite de 50 iterações. PARA TESTES
 			if (i==50) break;
 		}
 	}
