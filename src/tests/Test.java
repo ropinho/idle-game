@@ -6,12 +6,14 @@ import util.Explore;
 import personagem.*;
 
 public class Test {
+  private static Scanner in;
+
   public static void main(String args[]){
-    Scanner in = new Scanner(System.in);
+	in = new Scanner(System.in);
 
     // criando o personagem (Heŕoi)
     System.out.printf("\nNome do personagem: ");
-    String myname = in.next();
+    String myname = in.nextLine();
     System.out.printf("\nClasse do Herói: \n");
     System.out.printf("[a] Arrow\n[s] Swordsman\n[m] Magician\nDigite: ");
     String classechar = in.next();
@@ -34,9 +36,9 @@ public class Test {
     char r = resp.charAt(0);
     
     if (r != 'y') {
-    	System.out.println("Saindo do jogo\nEXIT_SUCESS");
+    	System.out.println("Encerrando o jogo");
     } else {
-    	new Explore().start();
+    	new Explore(hero).start();
     }
     
   }

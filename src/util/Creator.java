@@ -1,52 +1,57 @@
 package util;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.lang.Math;
 import personagem.*;
+import util.Console;
 
 public abstract class Creator {
 
-    // cria personagem de acordo com a classe escolhida
-    // (!) Atenção para NullPointerException em caso de classe ser diferente de
-    // dos 3 caracteres disponíveis
-    public static Hero createHero(String classe, String name) throws NullPointerException {
-        if (classe.equals("s")) return (new Swordsman(name));
-        if (classe.equals("a")) return (new Arrow(name));
-        if (classe.equals("m")) return (new Magician(name));
+    private static Scanner in;
 
-        System.out.println("Error on Create Hero: Class not exists!");
-        return null;
+
+	/* cria personagem de acordo com a classe escolhida */
+    public static Hero createHero(String classe, String name) throws NullPointerException {
+    	if ( classe.equals("s") || classe.equals("a") || classe.equals("m")) {
+    		if (classe.equals("s")) return (new Swordsman(name));
+    		if (classe.equals("a")) return (new Arrow(name));
+    		if (classe.equals("m")) return (new Magician(name));
+    	}
+    	return null;
     }
 
 
     public static void distributePoints(int points, Hero hero) {
-      Scanner in = new Scanner(System.in);
+      in = new Scanner(System.in);
       while (points > 0) {
         System.out.printf("\nVocê ainda possui %d pontos de atributos para distribuir.\n", points);
-        System.out.printf("Digite o valor para incrementar e em seguida o atributo:\n");
-        System.out.printf ("--- POWER = %d", hero.getPower());
-        System.out.println("[0] Cancelar operação");
-        hero.showAttributes();
+        System.out.printf("Digite o indice do atributo para incrementar e em seguida o valor:\n");
+        System.out.println("\n[0] Cancelar operação");
+        Console.printAttributesOf(hero);
         System.out.printf("Atributo: "); int aIndex = in.nextInt();
-        System.out.printf("Valor: "); int value = in.nextInt();
-        if (aIndex > 0 && value > 0) {
-        	if (points-value >= 0){
-        		hero.incrAttribute(aIndex-1, value);
-        		points = points - value;
+        if (aIndex > 0) {
+        	System.out.printf("Valor: "); int value = in.nextInt();
+        	if (value > 0) {
+        		if (points-value >= 0){
+        			hero.incrAttribute(aIndex-1, value);
+        			points = points - value;
+        		} else {
+        			hero.incrAttribute(aIndex-1, points);
+        			points = 0;
+        		}
+        		hero.calculatePower();
         	} else {
-        		hero.incrAttribute(aIndex-1, points);
-        		points = 0;
+        		break;
         	}
-        	hero.calculatePower();
         } else {
-        	break;
+        	if (aIndex == 0) break;
+        	else continue;
         }
       }
     }
@@ -57,18 +62,35 @@ public abstract class Creator {
      */
     public static Enemy generateEnemy() throws IOException {
     	
-    	Reader reader = Files.newBufferedReader(Paths.get("resources/enemies.csv"));
-    	CSVReader csvreader = new CSVReaderBuilder(reader).withSkipLines(1).build();
-    	System.out.println("Obj CSVReader e CSVReaderBuilder");
+    	BufferedReader buff;
+    	List<String[]> listaDeInimigos = new ArrayList<String[]>();
+    	String linha;
+    	String[] dados =  new String[2];
     	
-    	List<String[]> enemies = csvreader.readAll();
-    	System.out.println("Lista criada");
-    	
-    	for (String[] enemy : enemies) {
-    		System.out.printf("Nome: %s\tNivel: %s\n", enemy[0], enemy[1]);
+    	try {
+    		// abre o arquivo
+    		buff = new BufferedReader(new FileReader("data/enemies.csv"));
+    		// lê a primeira linha, essa linha é de cabeçalho e é ignorada
+    		linha = buff.readLine();
+    		
+    		while (linha != null) {
+    			linha = buff.readLine();
+    			if (linha == null) break;
+    			dados = linha.split(",");
+    			listaDeInimigos.add(dados);
+    		}
+    		
+    		buff.close();
+    		
+    	} catch (FileNotFoundException e) {
+    		System.out.printf("Erro: %s", e.toString());
     	}
     	
-    	return new Enemy("Ogro de Lama", 1);
+    	// pega um valor aleatorio dentro do escopo do tamanho da lista
+    	int index = (int) (Math.random() * (listaDeInimigos.size()-1) );
+    
+    	return new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
+    
     }
     
     
