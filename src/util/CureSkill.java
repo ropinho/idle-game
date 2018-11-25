@@ -10,7 +10,7 @@ public class CureSkill extends Skill {
 	
 	@Override
 	public void use() {
-		
+		System.out.println("Você usou uma Skill de Cura");
 	}
 	
 }

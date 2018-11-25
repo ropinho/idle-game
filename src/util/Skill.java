@@ -3,11 +3,13 @@ package util;
 public abstract class Skill {
 
 	protected SkillID identifier;
+	protected int level;
 	protected Skill next;
 	
 	public Skill (SkillID id) {
 		next = null;
 		identifier = id;
+		level = 1;
 	}
 	
 	public void setNext(Skill skill) {
