@@ -1,5 +1,7 @@
 package personagem;
 
+import util.Skill;
+
 public abstract class Character {
 
     // Atributos comuns a todos os personagens
@@ -15,6 +17,8 @@ public abstract class Character {
     
     protected int[] attributes = new int[6];
     protected final String[] attrNames = new String[6];
+    
+    public Skill skills;
 
     public Character(String name){
         this.name = name;

@@ -12,12 +12,12 @@ public class Test {
 	in = new Scanner(System.in);
 
     // criando o personagem (Heŕoi)
-    System.out.printf("\nNome do personagem: ");
+    /*System.out.printf("\nNome do personagem: ");
     String myname = in.nextLine();
     System.out.printf("\nClasse do Herói: \n");
     System.out.printf("[a] Arrow\n[s] Swordsman\n[m] Magician\nDigite: ");
-    String classechar = in.next();
-    Hero hero = Creator.createHero(classechar, myname);
+    String classechar = in.next();*/
+    Hero hero = Creator.createHero("s", "Aluisio Lee");
 
 
     // distribuição dos pontos de atributos iniciais = 50

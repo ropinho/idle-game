@@ -1,6 +1,7 @@
 package util;
 
 import personagem.Character;
+import personagem.Hero;
 
 public class Battle1v1 implements Battle {
 
@@ -21,10 +22,18 @@ public class Battle1v1 implements Battle {
 		
 		System.out.printf("BATTLE!! %s VS %s \n", FIGHTER_1.getName(), FIGHTER_2.getName());
 		
-		atk = FIGHTER_1;
-		def = FIGHTER_2;
+		atk = FIGHTER_1; // atk = personagem atacante
+		def = FIGHTER_2; // def = personagen atacado
 		
 		while (FIGHTER_1.getHp() > 0 && FIGHTER_2.getHp() > 0) {
+			
+			if (def instanceof Hero  &&  def.getHp() <= 200) {
+				try {
+					def.skills.use(SkillID.cure);
+				} catch (Exception e) {
+					System.out.println(e.toString());
+				}
+			}
 			
 			damage = atk.atack(def);
 			def.setHp(def.getHp() - damage);
@@ -36,7 +45,7 @@ public class Battle1v1 implements Battle {
 				System.err.println(ie.toString());
 			}
 			
-			// troca
+			// troca os turnos
 			aux = atk;
 			atk = def;
 			def = aux;
