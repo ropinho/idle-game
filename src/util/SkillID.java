@@ -1,5 +1,5 @@
 package util;
 
 public enum SkillID {
-	cure, damage, speed, shield;
+	CURE, DAMAGE, SPEED, SHIELD;
 }

@@ -17,7 +17,7 @@ public class Battle1v1 implements Battle {
 	
 	@Override
 	public void start() {
-		int damage;
+		int damage, cureskill=1;
 		Character atk, def, aux;
 		
 		System.out.printf("BATTLE!! %s VS %s \n", FIGHTER_1.getName(), FIGHTER_2.getName());
@@ -27,9 +27,11 @@ public class Battle1v1 implements Battle {
 		
 		while (FIGHTER_1.getHp() > 0 && FIGHTER_2.getHp() > 0) {
 			
-			if (def instanceof Hero  &&  def.getHp() <= 200) {
+			/* Test of skill of cure */
+			if (def instanceof Hero  &&  def.getHp() <= 200 && cureskill > 0) {
 				try {
-					def.skills.use(SkillID.cure);
+					def.skills.use(def, SkillID.CURE);
+					cureskill--;
 				} catch (Exception e) {
 					System.out.println(e.toString());
 				}
@@ -45,17 +47,21 @@ public class Battle1v1 implements Battle {
 				System.err.println(ie.toString());
 			}
 			
-			// troca os turnos
+			// change turns
 			aux = atk;
 			atk = def;
 			def = aux;
 		}
 		
+		finish();
 	}
 	
 	@Override
 	public void finish() {
-		
+		Character c = winner();
+		if (c instanceof Hero) {
+			((Hero) c).recalculateLevel();
+		}
 	}
 	
 	@Override

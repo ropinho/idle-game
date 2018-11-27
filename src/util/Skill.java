@@ -1,9 +1,12 @@
 package util;
 
+import personagem.Character;
+
 public abstract class Skill {
 
-	protected SkillID identifier;
+	protected String name;
 	protected int level;
+	protected SkillID identifier;
 	protected Skill next;
 	
 	public Skill (SkillID id) {
@@ -11,6 +14,9 @@ public abstract class Skill {
 		identifier = id;
 		level = 1;
 	}
+	
+	public String getName() {return this.name;}
+	public int getLevel() {return this.level;}
 	
 	public void setNext(Skill skill) {
 		if (next == null) {
@@ -20,24 +26,17 @@ public abstract class Skill {
 		}
 	}
 	
-	// verifica se a skill com o id especificado pode executar o use()
-	public boolean canUse(SkillID id) {
-		if (identifier == id)
-			return true;
-		return false;
-	}
-	
-	public void use(SkillID id) throws Exception {
-		if (canUse(id)) {
-			use();
+	public void use(Character c, SkillID id) throws Exception {
+		if (identifier == id) {
+			use(c);
 		} else {
 			if (next == null)
 				throw new Exception("Skill não encontrada");
-			next.use(id);
+			next.use(c, id);
 		}
 	}
 	
 	
-	public abstract void use();
+	public abstract void use(Character c);
 	
 }

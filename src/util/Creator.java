@@ -3,7 +3,6 @@ package util;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -60,7 +59,7 @@ public abstract class Creator {
     /*
      * Gerar um inimigo randomicamente a partir de um arquivo
      */
-    public static Enemy generateEnemy() throws IOException {
+    public static Enemy generateEnemy() {
     	
     	BufferedReader buff;
     	List<String[]> listaDeInimigos = new ArrayList<String[]>();
@@ -82,12 +81,12 @@ public abstract class Creator {
     		
     		buff.close();
     		
-    	} catch (FileNotFoundException e) {
+    	} catch (IOException e) {
     		System.out.printf("Erro: %s", e.toString());
     	}
     	
     	// pega um valor aleatorio dentro do escopo do tamanho da lista
-    	int index = (int) (Math.random() * (listaDeInimigos.size()-1) );
+    	int index = (int) (Math.random() * (listaDeInimigos.size()) );
     
     	return new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
     
