@@ -1,5 +1,6 @@
 package personagem;
 
+import util.Console;
 import util.Skill;
 
 public abstract class Character {
@@ -80,10 +81,16 @@ public abstract class Character {
             System.out.printf("[%d] %5s = %d\n", i+1, this.attrNames[i], this.attributes[i]);
         }
     }
+    
+    // incrementa pontos de experiencia
+    public void increaseExperience(int value) {
+    	this.xp += value;
+    }
 
     // aumenta de nível:
     public void levelUp(){
         this.level++;
+    	Console.levelUp(this);
     }
     
     // battle methods

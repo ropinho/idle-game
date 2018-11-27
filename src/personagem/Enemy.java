@@ -11,6 +11,6 @@ public class Enemy extends Character {
     public Enemy(String name, int lvl) {
         super(name);
         this.level = lvl;
-        
+        this.hp = (int)( this.hp + lvl*10 );
     }
 }
