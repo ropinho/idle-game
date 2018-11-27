@@ -11,8 +11,9 @@ public abstract class Console {
 	
 	public static void printAllCharacterInfo(Hero character) {
 		System.out.printf("Nome: %s\nJob: %s\n", character.getName(), character.getJOB());
+		System.out.printf("Level: %d\n", character.getLevel());
 		printAttributesOf(character);
-		System.out.printf("\nPower: %d\nHP: %d\n", character.getPower(), character.getHp());
+		System.out.printf("\nPower: %d\nHP: %d\nXP: %d\n", character.getPower(), character.getHp(), character.getXp());
 	}
 	
 	
@@ -34,6 +35,14 @@ public abstract class Console {
 	
 	public static void printGameOver() {
 		System.out.println("GAME OVER! SE FODEU!!!");
+	}
+	
+	public static void printIncreaseXP(int xp) {
+		System.out.printf("Ganhou +%dXP\n", xp);
+	}
+	
+	public static void levelUp(Character c) {
+		System.out.printf("%s LEVEL UP! New Level -> %d\n", c.getName(), c.getLevel());
 	}
 
 }
