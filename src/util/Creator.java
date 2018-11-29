@@ -62,7 +62,6 @@ public abstract class Creator {
       }
     }
 
-    
     /*
      * Gerar um inimigo randomicamente a partir de um arquivo
      */
@@ -99,21 +98,22 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment() throws IOException{
+	public static Item generateEquipment(){
 		BufferedReader buff;
 
-		Lis<String[]> listEnemy = new ArrayList<String[]>();
+		List<String[]> listEnemy = new ArrayList<String[]>();
 		String line;
-		String[] data = String[6]; // Acescentar mais
+		String[] data = new String[6]; // Acescentar mais
 
 		try{
 			//Open archive
 
 			buff = new BufferedReader(new FileReader("data/items.csv"));
-			line = buff.readline();
+			line = buff.readLine();
 
 			while(line != null){
-				line = buff.readline();
+				
+				line = buff.readLine();
 
 				if(line == null) break;
 
@@ -122,12 +122,12 @@ public abstract class Creator {
 			}
 
 			buff.close();
-		}catch(FileNotFoundException e){
+		}catch(IOException e){
 			System.out.println("Erro: " + e.toString());
 		}
 
 		int index = (int) (Math.random() * (listEnemy.size()-1));
 		
 		return new Item(listEnemy.get(index)[0], Integer.parseInt(listEnemy.get(index)[1]), listEnemy.get(index)[2]);
-	}
+	} 
 }

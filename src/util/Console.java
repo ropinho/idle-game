@@ -3,6 +3,7 @@ package util;
 import personagem.Character;
 import personagem.Hero;
 
+import item.Item;
 /*
  * Módulo criado para impressão de logs, instruções e informações no terminal
  * */
@@ -45,4 +46,7 @@ public abstract class Console {
 		System.out.printf("%s LEVEL UP! New Level -> %d\n", c.getName(), c.getLevel());
 	}
 
+	public static void printEquip(Item equip){
+		System.out.println("Item equipado"+ equip.getName()+" -- " + equip.getLevel());
+	}
 }

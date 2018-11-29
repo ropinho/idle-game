@@ -7,17 +7,27 @@ import util.Creator;
 import util.Explore;
 import personagem.*;
 
+
+import item.Item;
+
+
 public class Test {
 	
   private static Scanner in;
   private static Explore exploration;
   private static Hero meuHeroi;
+  private static Item Equip;
 
   public static void main(String args[]){
-	in = new Scanner(System.in);
+	  in = new Scanner(System.in);
 
     meuHeroi = Creator.createHero("s", "Aluisio Lee");
     exploration = new Explore(meuHeroi);
+
+    Console.printAllCharacterInfo(meuHeroi);
+
+    Equip = Creator.generateEquipment();
+    Console.printEquip(Equip);
 
     Console.printAllCharacterInfo(meuHeroi);
 
