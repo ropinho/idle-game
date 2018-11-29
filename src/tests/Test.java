@@ -26,7 +26,7 @@ public class Test {
 
     Console.printAllCharacterInfo(meuHeroi);
 
-    Equip = Creator.generateEquipment();
+    Equip = Creator.generateEquipment("s");
     Console.printEquip(Equip);
 
     Console.printAllCharacterInfo(meuHeroi);
