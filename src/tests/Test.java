@@ -1,7 +1,6 @@
 package tests;
 
 import java.util.Scanner;
-
 import util.Console;
 import util.Creator;
 import util.Explore;
@@ -12,7 +11,7 @@ public class Test {
   private static Scanner in;
   private static Explore exploration;
   private static Hero meuHeroi;
-
+  /*
   public static void main(String args[]){
 	in = new Scanner(System.in);
 
@@ -21,15 +20,8 @@ public class Test {
 
     Console.printAllCharacterInfo(meuHeroi);
 
-    System.out.println("Iniciar jogo? [y/n]");
-    String resp = in.next();
-    char r = resp.charAt(0);
+    /* Start the loop *
+    exploration.start();
     
-    if (r != 'y') {
-    	System.out.println("Encerrando o jogo");
-    } else {
-    	exploration.start();
-    }
-    
-  }
+  }*/
 }

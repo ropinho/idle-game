@@ -2,11 +2,25 @@ package item;
 
 public class Item {
 	
-    String name;
-    int level;
+    protected String name;
+    protected float weight;
+    protected float price;
     
-    public Item(String name, int lvl) {
-        this.name = name;
-        this.level = lvl;
+    public Item(String name, float w, float pr) {
+    	this.name = name;
+    	this.weight = w;
+    	this.price = pr;
     }
+    
+    public String getName() {
+    	return name;
+    }
+    public float getWeight() {
+    	return weight;
+    }
+    public float getPrice() {
+    	return price;
+    }
+    
+    
 }
