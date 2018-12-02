@@ -127,6 +127,11 @@ public abstract class Creator {
 		
 		int index = (int) (Math.random() * (listEquipment.size()));
 		
-		return new Item(listEquipment.get(index)[0], Integer.parseInt(listEquipment.get(index)[1]), listEquipment.get(index)[2]);
+		return new Item(listEquipment.get(index)[0], 
+						Integer.parseInt(listEquipment.get(index)[1]),
+						listEquipment.get(index)[2], 
+						Integer.parseInt(listEquipment.get(index)[3]), 
+						Integer.parseInt(listEquipment.get(index)[4]),
+						Integer.parseInt(listEquipment.get(index)[5]) );
 	} 
 }
