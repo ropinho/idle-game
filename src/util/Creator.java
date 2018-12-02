@@ -101,9 +101,9 @@ public abstract class Creator {
 	public static Item generateEquipment(String classe){
 		BufferedReader buff;
 
-		List<String[]> listEquip = new ArrayList<String[]>();
+		List<String[]> listEquipment = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[3]; // Acescentar mais
+		String[] data = new String[6]; // Acescentar mais
 
 		try{
 			//Open archive
@@ -117,13 +117,7 @@ public abstract class Creator {
 
 				data = line.split(",");
 
-				if(classe.equals(data[2])){
-					System.out.println("\n--> Foi adicionado " + " -> [name: " + data[0] + " [lvl: " + data[1] + " [class: " + data[2]);
-					listEquip.add(data);
-				}else{
-					System.out.println("\n--> Não adicionou " + "-> [name: " + data[0] + " [lvl: " + data[1] + " [class: " + data[2]);
-				}
-			
+				if(classe.equals(data[2])) listEquipment.add(data);
 			}
 
 			buff.close();
@@ -131,11 +125,8 @@ public abstract class Creator {
 			System.out.printf("Erro: %s", e.toString());
 		}
 		
-		System.out.println("Tamanho total: " + listEquip.size());
-
-		int index = (int) (Math.random() * (listEquip.size()));
-		System.out.println("index escolhido: " + index);
+		int index = (int) (Math.random() * (listEquipment.size()));
 		
-		return new Item(listEquip.get(index)[0], Integer.parseInt(listEquip.get(index)[1]), listEquip.get(index)[2]);
+		return new Item(listEquipment.get(index)[0], Integer.parseInt(listEquipment.get(index)[1]), listEquipment.get(index)[2]);
 	} 
 }
