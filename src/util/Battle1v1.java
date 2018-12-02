@@ -1,5 +1,6 @@
 package util;
 
+import out.Console;
 import personagem.Character;
 import personagem.Hero;
 

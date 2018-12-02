@@ -1,5 +1,6 @@
 package util;
 
+import out.Console;
 import personagem.*;
 import util.Battle1v1;
 
@@ -18,7 +19,7 @@ public class Explore extends java.lang.Thread {
 		int i=0;
 		
 		while(true) {
-			System.out.print("Explorando...\n");
+			Console.print("Explorando...");
 			
 			if (++i % 4 == 0) {
 				ENEMY = Creator.generateEnemy();

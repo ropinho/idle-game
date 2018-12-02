@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import out.Console;
+
 import java.lang.Math;
 import personagem.*;
-import util.Console;
 
 public abstract class Creator {
 
