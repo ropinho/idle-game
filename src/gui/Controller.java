@@ -29,4 +29,10 @@ public class Controller {
 		Play.bagInfo.append(s + "\n");
 	}
 	
+	/*
+	 * Atualiza as informações da Mochila
+	 * */
+	public void updateBagInfo() {
+		
+	}
 }

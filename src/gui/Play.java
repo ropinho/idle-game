@@ -13,30 +13,35 @@ import javax.swing.border.EmptyBorder;
 
 import util.Bag;
 
+import java.awt.Font;
+
 public class Play extends JFrame {
+
 	private static final long serialVersionUID = 1L;
 	
+	/* public */
 	public static Controller idle;
 
-	private static JPanel mainContainer;
-	private static JTabbedPane multiAbas;
-	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings;
+	/* package */
 	static JTextArea console;
 	static JTextArea bagInfo;
+	
+	/* private */
+	private JPanel mainContainer;
+	private JTabbedPane multiAbas;
+	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings;
+	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					idle = new Controller();
 					Play frame = new Play();
-					frame.initCharacterCreation();
 					frame.setVisible(true);
-					frame.idle.exploration.start();
+					frame.idle = new Controller();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,27 +61,29 @@ public class Play extends JFrame {
 		mainContainer.setLayout(new BorderLayout(0, 0));
 		setContentPane(mainContainer);
 		
-		/* creating multiply tabs */
+		// criando multiplas abas
+		
 		multiAbas = new JTabbedPane();
 		panelCharacter = new JPanel();
 		panelBag = new JPanel();
 		panelPlay = new JPanel();
 		panelSettings = new JPanel();
 		
+		// Play tab
+		console = new JTextArea(32, 64);
+		console.setFont(new Font("Ubuntu Mono", Font.PLAIN, 14));
+		
 		initPlayTab();
 		initBagTab();
+		initCharacterTab();
 		
 		/* adding all tabs */
 		multiAbas.add("Personagem", panelCharacter);
-		multiAbas.add("Mochila", panelBag);
 		multiAbas.add("Jogo", panelPlay);
+		multiAbas.add("Mochila", panelBag);
 		multiAbas.add("Config", panelSettings);
 		mainContainer.add(multiAbas);
 		
-	}
-	
-	private void initCharacterCreation() {
-		initCharacterTab();	
 	}
 
 	/* Character tab */
@@ -101,7 +108,6 @@ public class Play extends JFrame {
 	private static void initPlayTab() {
 		console = new JTextArea(32, 64);
 		console.setEditable(false);
-		
 		panelPlay.add(console);
 	}
 	
