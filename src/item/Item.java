@@ -3,12 +3,18 @@ package item;
 public class Item {
 	String name;
     int level;
-    String classChar;
+    String characterClass;
+    int atack;
+    int defense;
+    int hp;
 
-    public Item(String name, int lvl, String classChar) {
+    public Item(String name, int level, String characterClass, int atack, int defense, int hp) {
         this.name = name;
-        this.level = lvl;
-        this.classChar = classChar;
+        this.level = level;
+        this.characterClass = characterClass;
+        this.atack = atack;
+        this.defense = defense;
+        this.hp = hp;
     }
 
     public String getName() {
@@ -27,11 +33,36 @@ public class Item {
         this.level = level;
     }
 
-    public String getClassChar() {
-        return this.classChar;
+    public String getCharacterClass() {
+        return this.characterClass;
     }
 
-    public void setClassChar(String classChar) {
-        this.classChar = classChar;
+    public void setCharacterClass(String characterClass) {
+        this.characterClass = characterClass;
     }
+
+    public int getAtack() {
+        return this.atack;
+    }
+
+    public void setAtack(int atack) {
+        this.atack = atack;
+    }
+
+    public int getDefense() {
+        return this.defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+      
 }
