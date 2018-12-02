@@ -18,6 +18,7 @@ public class Controller {
 	 * Faz prints no console principal da GUI, na aba Jogo 
 	 * */
 	public void print(String s) {
+		System.out.println(s);
 		Play.console.append(s + "\n");
 	}
 	
@@ -34,5 +35,9 @@ public class Controller {
 	 * */
 	public void updateBagInfo() {
 		
+	}
+	
+	public Hero createHero(String cls, String name) {
+		return Creator.createHero(cls, name);
 	}
 }

@@ -42,6 +42,10 @@ public class Play extends JFrame {
 					Play frame = new Play();
 					frame.setVisible(true);
 					frame.idle = new Controller();
+					
+					JoinScreen join = new JoinScreen();
+					join.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
