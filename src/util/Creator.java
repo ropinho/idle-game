@@ -103,7 +103,7 @@ public abstract class Creator {
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[6]; // Acescentar mais
+		String[] data = new String[6]; //Como vai ficar dividida a string
 
 		try{
 			//Open archive
@@ -117,7 +117,7 @@ public abstract class Creator {
 
 				data = line.split(",");
 
-				if(classe.equals(data[2])) listEquipment.add(data);
+				if(classe.equals(data[2])) listEquipment.add(data); //Verifica se o item é da classe do personagem
 			}
 
 			buff.close();
@@ -127,6 +127,7 @@ public abstract class Creator {
 		
 		int index = (int) (Math.random() * (listEquipment.size()));
 		
+		//Retorna todos os parametrôs com, item, level, class, atack, def e hp
 		return new Item(listEquipment.get(index)[0], 
 						Integer.parseInt(listEquipment.get(index)[1]),
 						listEquipment.get(index)[2], 
