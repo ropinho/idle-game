@@ -9,7 +9,7 @@ public abstract class Console {
 	
 	public static void print(String string) {
 		System.out.println(string);
-		Play.idle.print(string+"\n");
+		Play.idle.print(string);
 	}
 	
 	
@@ -28,27 +28,36 @@ public abstract class Console {
 	
 	
 	public static void printAtackLog(Character c1, Character c2, int damage) {
-		System.out.printf("%s(%d) causou %d de dano em %s(%d)\n", c1.getName(), c1.getHp(), damage, c2.getName(), c2.getHp());
+		String string = c1.getName() + "("+ c1.getHp() +") causou "+ damage +" de dano em "+ c2.getName() +"("+ c2.getHp() +")";
+		System.out.printf(string + "\n");
+		Play.idle.print(string);
 	}
 	
 	
 	public static void printEndOfBattle(Character winner) {
 		System.out.printf("%s venceu!\n", winner.getName());
+		Play.idle.print(winner.getName() + " VENCEU!");
 	}
 	
 	
 	public static void printGameOver() {
-		System.out.println("DEVEU! GAME OVER!");	
+		System.out.println("DEVEU! GAME OVER!");
+		Play.idle.print("DEVEU! GAME OVER!");
 	}
 	
 	
 	public static void printIncreaseXP(int xp) {
-		System.out.printf("Ganhou +%dXP\n", xp);
+		System.out.printf("Ganhou +%d XP\n", xp);
+		Console.print("Ganhou +"+xp+" XP");
 	}
 	
 	
 	public static void levelUp(Character c) {
-		System.out.printf("%s LEVEL UP! New Level -> %d\n", c.getName(), c.getLevel());
+		String s;
+		s = (c.getName() + " LEVEL UP! Novo nível --> "+ c.getLevel());
+		System.out.printf(s.toString());
+		Play.idle.print(s.toString());	
 	}
+	
 
 }

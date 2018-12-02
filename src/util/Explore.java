@@ -23,7 +23,7 @@ public class Explore extends java.lang.Thread {
 			
 			if (++i % 4 == 0) {
 				ENEMY = Creator.generateEnemy();
-				System.out.printf("%s encontrou um inimigo %s\n", HERO.getName(), ENEMY.getName());
+				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName());
 				
 				battle = new Battle1v1(HERO, ENEMY);
 				battle.start();

@@ -101,7 +101,6 @@ public class Play extends JFrame {
 	private static void initPlayTab() {
 		console = new JTextArea(32, 64);
 		console.setEditable(false);
-		//console.setBorder(BorderFactory.createLineBorder(Color.darkGray, 1));
 		
 		panelPlay.add(console);
 	}
