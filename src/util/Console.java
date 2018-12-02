@@ -47,6 +47,10 @@ public abstract class Console {
 	}
 
 	public static void printEquip(Item equip){
-		System.out.println("Item equipado"+ equip.getName()+" -- " + equip.getLevel());
+		System.out.println("Item: " + equip.getName()
+							+ " \nlevel: " + equip.getLevel() 
+							+ "\nAtack: " + equip.getAtack()
+							+ "\nDefense: " + equip.getDefense() 
+							+ "\nHp: " + equip.getHp());
 	}
 }
