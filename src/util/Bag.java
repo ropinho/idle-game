@@ -2,6 +2,7 @@ package util;
 
 import java.util.ArrayList;
 import item.Item;
+import out.Console;
 
 public abstract class Bag {
 	
@@ -56,10 +57,12 @@ public abstract class Bag {
     }
     
     public static void showInfo() {
-        int n=0;
         System.out.printf("--Mochila-[level %d]---------------\n", level);
-        for (Item i : slot)
+        
+        for (Item i : slot) {
             System.out.printf("%s\t%.2f kg\n", i.getName(), i.getWeight());
+        }
+        
         System.out.printf("\nNúmero de itens: %d (máx: %d)\n", slot.size(), maxSize);
         System.out.printf("Peso total: %.2fkg (máx: %.1fkg)\n", weight(), maxWeight);
         System.out.println("---------------------------------");

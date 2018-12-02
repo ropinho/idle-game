@@ -1,6 +1,6 @@
 package personagem;
 
-import util.Console;
+import out.Console;
 import util.Skill;
 
 public abstract class Character {
