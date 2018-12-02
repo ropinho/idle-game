@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.sun.media.sound.SimpleSoundbank;
-import com.sun.org.apache.xpath.internal.SourceTree;
+//import com.sun.media.sound.SimpleSoundbank;
+//import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.lang.Math;
 import personagem.*;
@@ -98,36 +98,44 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment(){
+	public static Item generateEquipment(String classe){
 		BufferedReader buff;
 
-		List<String[]> listEnemy = new ArrayList<String[]>();
+		List<String[]> listEquip = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[6]; // Acescentar mais
+		String[] data = new String[3]; // Acescentar mais
 
 		try{
 			//Open archive
-
 			buff = new BufferedReader(new FileReader("data/items.csv"));
 			line = buff.readLine();
-
+			
 			while(line != null){
-				
 				line = buff.readLine();
 
 				if(line == null) break;
 
 				data = line.split(",");
-				listEnemy.add(data);
+
+				if(classe.equals(data[2])){
+					System.out.println("\n--> Foi adicionado " + " -> [name: " + data[0] + " [lvl: " + data[1] + " [class: " + data[2]);
+					listEquip.add(data);
+				}else{
+					System.out.println("\n--> Não adicionou " + "-> [name: " + data[0] + " [lvl: " + data[1] + " [class: " + data[2]);
+				}
+			
 			}
 
 			buff.close();
 		}catch(IOException e){
-			System.out.println("Erro: " + e.toString());
+			System.out.printf("Erro: %s", e.toString());
 		}
-
-		int index = (int) (Math.random() * (listEnemy.size()-1));
 		
-		return new Item(listEnemy.get(index)[0], Integer.parseInt(listEnemy.get(index)[1]), listEnemy.get(index)[2]);
+		System.out.println("Tamanho total: " + listEquip.size());
+
+		int index = (int) (Math.random() * (listEquip.size()));
+		System.out.println("index escolhido: " + index);
+		
+		return new Item(listEquip.get(index)[0], Integer.parseInt(listEquip.get(index)[1]), listEquip.get(index)[2]);
 	} 
 }
