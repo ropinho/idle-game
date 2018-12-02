@@ -1,7 +1,8 @@
 package tests;
 
 import java.util.Scanner;
-import util.Console;
+
+import out.Console;
 import util.Creator;
 import util.Explore;
 import personagem.*;
