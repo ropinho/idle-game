@@ -1,19 +1,23 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
 import util.Bag;
 
 import java.awt.Font;
+import java.awt.GridLayout;
 
 public class Play extends JFrame {
 
@@ -25,11 +29,17 @@ public class Play extends JFrame {
 	/* package */
 	static JTextArea console;
 	static JTextArea bagInfo;
+	static JTextArea textArea[] =  new JTextArea[3];
 	
 	/* private */
 	private JPanel mainContainer;
 	private JTabbedPane multiAbas;
-	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings;
+	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings, auxPanel;
+	private static MenuGroup belowConsoleMenu;
+	
+	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 19);
+	private static final Font INFO_FONT = new Font("Arial", Font.PLAIN, 18);
+	private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
 	
 
 	/**
@@ -39,12 +49,13 @@ public class Play extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Play frame = new Play();
-					frame.setVisible(true);
-					frame.idle = new Controller();
 					
 					JoinScreen join = new JoinScreen();
 					join.setVisible(true);
+					
+					Play frame = new Play();
+					frame.setVisible(true);
+					frame.idle = new Controller();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +69,7 @@ public class Play extends JFrame {
 	 */
 	public Play() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 980, 640);
+		setBounds(150, 100, 920, 640);
 		setTitle("World of Idle");
 		mainContainer = new JPanel();
 		mainContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,20 +77,28 @@ public class Play extends JFrame {
 		setContentPane(mainContainer);
 		
 		// criando multiplas abas
-		
 		multiAbas = new JTabbedPane();
 		panelCharacter = new JPanel();
+		panelCharacter.setLayout(new GridLayout(1, 3));
 		panelBag = new JPanel();
 		panelPlay = new JPanel();
+		panelPlay.setLayout(new GridLayout(2, 1));
 		panelSettings = new JPanel();
 		
-		// Play tab
+		// Play tab ########################################//
 		console = new JTextArea(32, 64);
-		console.setFont(new Font("Ubuntu Mono", Font.PLAIN, 14));
+		console.setFont(CONSOLE_FONT);
+		console.setEditable(false);
+		panelPlay.add(console);
 		
-		initPlayTab();
-		initBagTab();
-		initCharacterTab();
+		belowConsoleMenu = new MenuGroup();
+		panelPlay.add(belowConsoleMenu);
+		
+		
+		// Character tab ###################################//
+		auxPanel = new JPanel();
+		auxPanel.setLayout(new GridLayout(1,3));
+		panelCharacter.add(auxPanel);
 		
 		/* adding all tabs */
 		multiAbas.add("Personagem", panelCharacter);
@@ -91,39 +110,22 @@ public class Play extends JFrame {
 	}
 
 	/* Character tab */
-	private static void initCharacterTab() {
-		JPanel panel = new JPanel();
+	static void initCharacterTab() {
+		// dividido em 3 partes verticalmente
+		for (int i=0; i<3; i++) {
+			textArea[i] = new JTextArea();
+			textArea[i].setEditable(false);
+			textArea[i].setFont(INFO_FONT);
+			textArea[i].setBounds(0,0, 64, 72);
+			//textArea[i].setBorder(BorderFactory.createLineBorder(Color.black, 1));
+		}
 
-		JLabel lblClasse = new JLabel("Classe");
-		JTextField fieldClasse = new JTextField(2);
-		
-		JLabel lblNome = new JLabel("Nome");
-		JTextField fieldNome = new JTextField(20);
-		
-		panel.add(new JLabel("Criar Personagem"));
-		panel.add(lblClasse);
-		panel.add(fieldClasse);
-		panel.add(lblNome);
-		panel.add(fieldNome);
-		panelCharacter.add(panel);
+		updateCharacterInfo();
+		auxPanel.add(textArea[0]);
+		auxPanel.add(textArea[1]);
+		auxPanel.add(textArea[2]);
 	}
 	
-	/* Play tab */
-	private static void initPlayTab() {
-		console = new JTextArea(32, 64);
-		console.setEditable(false);
-		panelPlay.add(console);
-	}
-	
-	
-	/* Backpack tab */
-	private static void initBagTab() {
-		JPanel painel = new JPanel();
-		bagInfo = new JTextArea(20, 32);
-		Bag.showInfo();
-		painel.add(bagInfo);
-		panelBag.add(painel);
-	}
 	
 	
 	/*
@@ -131,5 +133,26 @@ public class Play extends JFrame {
 	 * */
 	public static void print(String str) {
 		console.append(str);
+	}
+	
+	static void updateCharacterInfo() {
+		textArea[0].setText("Dados do Personagem\n\n");
+		textArea[0].append("Nome: \t"+ idle.HERO.getName() + "\n");
+		textArea[0].append("Classe:\t"+ idle.HERO.getJOB() + "\n");
+		textArea[0].append("Level:\t"+ idle.HERO.getLevel() + "\n");
+		textArea[0].append("XP:\t"+ idle.HERO.getXp() + "\n");
+		
+		textArea[1].setText("Atributos\n\n");
+		String[] attrName = idle.HERO.getAttrNames();
+		int[] attr = idle.HERO.getAttributes(); 
+		for (int i=0; i<6; i++)
+			textArea[1].append(attrName[i] + ": \t"+ attr[i]+ "\n");
+		textArea[1].append("\nHP:\t"+ idle.HERO.getHp());
+		textArea[1].append("\nAtaque:\t"+ idle.HERO.getAtack());
+		textArea[1].append("\nDefesa:\t"+ idle.HERO.getDefense());
+		textArea[1].append("\nVelocidade:\t"+ idle.HERO.getSpeed());
+		textArea[1].append("\nPower:\t"+ idle.HERO.getPower());
+		
+		textArea[2].setText("Equipamento\n\n");
 	}
 }

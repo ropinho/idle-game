@@ -21,7 +21,9 @@ public class CloseLoginScreen implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		/*
+		 * Ação do botão "CRIAR"
+		 * */
 		String textName = field1.getText();
 		String textClasse = field2.getText();
 		
@@ -29,7 +31,9 @@ public class CloseLoginScreen implements ActionListener {
 		Play.idle.HERO = Play.idle.createHero(textClasse, textName);
 		Play.print("Personagem criado: "+ Play.idle.HERO.getName());
 		
-		frame.dispose();
+		frame.dispose(); // fecha a janela de criação
+		
+		Play.initCharacterTab(); // inicia os componentes da aba do Personagem
 	}
 	
 	
