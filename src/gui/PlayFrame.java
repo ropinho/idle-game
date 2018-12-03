@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -18,8 +19,9 @@ import util.Bag;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Point;
 
-public class Play extends JFrame {
+public class PlayFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,7 +39,7 @@ public class Play extends JFrame {
 	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings, auxPanel;
 	private static MenuGroup belowConsoleMenu;
 	
-	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 19);
+	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 18);
 	private static final Font INFO_FONT = new Font("Arial", Font.PLAIN, 18);
 	private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
 	
@@ -53,9 +55,10 @@ public class Play extends JFrame {
 					JoinScreen join = new JoinScreen();
 					join.setVisible(true);
 					
-					Play frame = new Play();
+					PlayFrame frame = new PlayFrame();
 					frame.setVisible(true);
 					frame.idle = new Controller();
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +70,7 @@ public class Play extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Play() {
+	public PlayFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(150, 100, 920, 640);
 		setTitle("World of Idle");
@@ -89,9 +92,10 @@ public class Play extends JFrame {
 		console = new JTextArea(32, 64);
 		console.setFont(CONSOLE_FONT);
 		console.setEditable(false);
-		panelPlay.add(console);
+		JScrollPane scroll = new JScrollPane(console);
+		panelPlay.add(scroll);
 		
-		belowConsoleMenu = new MenuGroup();
+		belowConsoleMenu = new MenuGroup("Boss", "[...(?)...]", "Skills");
 		panelPlay.add(belowConsoleMenu);
 		
 		

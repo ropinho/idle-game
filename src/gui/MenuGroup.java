@@ -8,15 +8,17 @@ import javax.swing.JPanel;
 
 public class MenuGroup extends JPanel {
 	
-	private static final int cols = 3; // numero de colunas
+	private final int cols = 3; // numero de colunas
 	
-	private static JLabel title[] = new JLabel[cols];
-	private static JPanel panel[] = new JPanel[cols];
+	private JLabel title[] = new JLabel[cols];
+	private JPanel panel[] = new JPanel[cols];
 	
-	public MenuGroup() {
+	public MenuGroup(String t1, String t2, String t3) {
 		setLayout(new GridLayout(1, cols));
+		title[0] = new JLabel(t1);
+		title[1] = new JLabel(t2);
+		title[2] = new JLabel(t3);
 		for (int i=0; i<cols; i++) {
-			title[i] = new JLabel("Titulo "+ (i+1));
 			panel[i] = new JPanel();
 			panel[i].setLayout(new GridLayout(4, 4));
 			panel[i].setBorder(BorderFactory.createTitledBorder(getBorder()));
@@ -24,5 +26,4 @@ public class MenuGroup extends JPanel {
 			add(panel[i]);
 		}
 	}
-
 }

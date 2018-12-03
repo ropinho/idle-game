@@ -28,12 +28,14 @@ public class CloseLoginScreen implements ActionListener {
 		String textClasse = field2.getText();
 		
 		// gera o herói
-		Play.idle.HERO = Play.idle.createHero(textClasse, textName);
-		Play.print("Personagem criado: "+ Play.idle.HERO.getName());
+		PlayFrame.idle.createHero(textClasse, textName);
+		PlayFrame.print("Personagem criado: "+ PlayFrame.idle.HERO.getName());
 		
 		frame.dispose(); // fecha a janela de criação
 		
-		Play.initCharacterTab(); // inicia os componentes da aba do Personagem
+		PlayFrame.initCharacterTab(); // inicia os componentes da aba do Personagem
+
+		PlayFrame.idle.exploration.start(); /* Inicia o loop do Jogo */
 	}
 	
 	

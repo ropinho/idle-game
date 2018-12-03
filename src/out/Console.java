@@ -1,6 +1,6 @@
 package out;
 
-import gui.Play;
+import gui.PlayFrame;
 import personagem.Character;
 import personagem.Hero;
 
@@ -8,8 +8,7 @@ public abstract class Console {
 		
 	
 	public static void print(String string) {
-		System.out.println(string);
-		Play.idle.print(string);
+		PlayFrame.idle.print(string);
 	}
 	
 	
@@ -29,34 +28,28 @@ public abstract class Console {
 	
 	public static void printAtackLog(Character c1, Character c2, int damage) {
 		String string = c1.getName() + "("+ c1.getHp() +") causou "+ damage +" de dano em "+ c2.getName() +"("+ c2.getHp() +")";
-		System.out.printf(string + "\n");
-		Play.idle.print(string);
+		PlayFrame.idle.print(string);
 	}
 	
 	
 	public static void printEndOfBattle(Character winner) {
-		System.out.printf("%s venceu!\n", winner.getName());
-		Play.idle.print(winner.getName() + " VENCEU!");
+		PlayFrame.idle.print(winner.getName() + " VENCEU!");
 	}
 	
 	
 	public static void printGameOver() {
-		System.out.println("DEVEU! GAME OVER!");
-		Play.idle.print("DEVEU! GAME OVER!");
+		PlayFrame.idle.print("DEVEU! GAME OVER!");
 	}
 	
 	
 	public static void printIncreaseXP(int xp) {
-		System.out.printf("Ganhou +%d XP\n", xp);
-		Console.print("Ganhou +"+xp+" XP");
+		print("Ganhou +"+xp+" XP");
 	}
 	
 	
 	public static void levelUp(Character c) {
-		String s;
-		s = (c.getName() + " LEVEL UP! Novo nível --> "+ c.getLevel());
-		System.out.printf(s.toString());
-		Play.idle.print(s.toString());	
+		String s = (c.getName() + " LEVEL UP! Novo nível --> "+ c.getLevel());
+		print(s);	
 	}
 	
 

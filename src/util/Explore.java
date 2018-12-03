@@ -1,5 +1,6 @@
 package util;
 
+import gui.PlayFrame;
 import out.Console;
 import personagem.*;
 import util.Battle1v1;
@@ -33,6 +34,7 @@ public class Explore extends java.lang.Thread {
 					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
 					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
 					HERO.heal(); // recupera HP
+					PlayFrame.idle.updateCharacterInfo();// atualiza aba de info do person.
 				} else {
 					Console.printEndOfBattle(ENEMY);
 					Console.printGameOver();

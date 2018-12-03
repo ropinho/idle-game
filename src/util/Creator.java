@@ -24,7 +24,7 @@ public abstract class Creator {
     		if (classe.equals("a")) return (new Arrow(name));
     		if (classe.equals("m")) return (new Magician(name));
     	}
-    	return null;
+    	throw new NullPointerException();
     }
 
 

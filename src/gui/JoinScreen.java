@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import gui.Play;
+import gui.PlayFrame;
 
 public class JoinScreen extends JFrame {
 	

@@ -21,7 +21,7 @@ public class Battle1v1 implements Battle {
 		int damage, cureskill=1;
 		Character atk, def, aux;
 		
-		System.out.printf("BATTLE!! %s VS %s \n", FIGHTER_1.getName(), FIGHTER_2.getName());
+		Console.print("BATTLE!! "+ FIGHTER_1.getName() +" VS "+ FIGHTER_2.getName());
 		
 		atk = FIGHTER_1; // atk = personagem atacante
 		def = FIGHTER_2; // def = personagen atacado
@@ -34,7 +34,7 @@ public class Battle1v1 implements Battle {
 					def.skills.use(def, SkillID.CURE);
 					cureskill--;
 				} catch (Exception e) {
-					System.out.println(e.toString());
+					System.out.println("skills.use(): " + e.toString());
 				}
 			}
 			
@@ -45,7 +45,7 @@ public class Battle1v1 implements Battle {
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException ie) {
-				System.err.println(ie.toString());
+				System.err.println("ThreadSleep(): "+ ie.toString());
 			}
 			
 			// change turns

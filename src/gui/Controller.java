@@ -10,8 +10,7 @@ public class Controller {
 	public Hero HERO;
 	
 	public Controller() {
-		HERO = Creator.createHero("s", "Panaka");
-		exploration = new Explore(HERO);
+		
 	}
 	
 	/*
@@ -19,7 +18,8 @@ public class Controller {
 	 * */
 	public void print(String s) {
 		System.out.println(s);
-		Play.console.append(s + "\n");
+		PlayFrame.console.append(s + "\n");
+		PlayFrame.console.setCaretPosition(PlayFrame.console.getText().length()); // rolagem automática
 	}
 	
 	
@@ -27,7 +27,7 @@ public class Controller {
 	 * Faz prints na area de texto da aba Mochila 
 	 * */
 	public void printBag(String s) {
-		Play.bagInfo.append(s + "\n");
+		PlayFrame.bagInfo.append(s + "\n");
 	}
 	
 	/*
@@ -37,7 +37,15 @@ public class Controller {
 		
 	}
 	
-	public Hero createHero(String cls, String name) {
-		return Creator.createHero(cls, name);
+	/*
+	 * Atualiza as informações do Personagem
+	 * */
+	public void updateCharacterInfo() {
+		PlayFrame.updateCharacterInfo();
+	}
+	
+	public void createHero(String cls, String name) {
+		HERO = Creator.createHero(cls, name);
+		exploration = new Explore(HERO);
 	}
 }

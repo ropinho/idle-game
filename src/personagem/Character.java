@@ -1,6 +1,7 @@
 package personagem;
 
 import out.Console;
+import util.CureSkill;
 import util.Skill;
 
 public abstract class Character {
@@ -35,6 +36,8 @@ public abstract class Character {
         this.attrNames[4] = "Sorte";
         this.attrNames[5] = "Vitalidade";
         this.power = this.atack = 100;
+        
+        skills = new CureSkill();
     }
 
     /* getters and setters */
