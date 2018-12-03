@@ -39,4 +39,17 @@ public class Arrow extends Hero implements Job {
         }
         this.atack = (int) this.atack / 9;
     }
+    
+    @Override
+    public void calculateDefense() {
+    	this.defense = 0;
+        for (int i=0; i<6; i++){
+            float peso;
+            // [3] = inteligencia, [2] agilidade e [4] = sorte
+            if(i==2 || i==3 || i==4) peso = 2;
+            else peso = 1;
+            this.atack += peso * this.attributes[i];
+        }
+        this.atack = (int) this.atack / 9;
+    }
 }

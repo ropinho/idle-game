@@ -39,4 +39,17 @@ public class Magician extends Hero implements Job {
         }
         this.atack = (int) this.atack / 9;
     }
+    
+    @Override
+    public void calculateDefense() {
+    	this.defense = 0;
+        for (int i=0; i<6; i++){
+            float peso;
+            // [3] = inteligencia e [5] = vitalidade
+            if(i==3 || i==5) peso = 3;
+            else peso = 1;
+            this.defense += peso * this.attributes[i];
+        }
+        this.defense = this.defense / 10;
+    }
 }
