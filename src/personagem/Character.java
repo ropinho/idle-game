@@ -1,5 +1,9 @@
 package personagem;
 
+import out.Console;
+import util.CureSkill;
+import util.Skill;
+
 public abstract class Character {
 
     // Atributos comuns a todos os personagens
@@ -15,6 +19,13 @@ public abstract class Character {
     protected int defense;
     protected int power;
     
+<<<<<<< HEAD
+=======
+    protected int[] attributes = new int[6];
+    protected final String[] attrNames = new String[6];
+    
+    public Skill skills;
+>>>>>>> ronald
 
     public Character(String name){
         this.name = name;
@@ -30,6 +41,8 @@ public abstract class Character {
         this.attrNames[4] = "Sorte";
         this.attrNames[5] = "Vitalidade";
         this.power = this.atack = 100;
+        
+        skills = new CureSkill();
     }
 
     /* getters and setters */
@@ -75,10 +88,16 @@ public abstract class Character {
             System.out.printf("[%d] %5s = %d\n", i+1, this.attrNames[i], this.attributes[i]);
         }
     }
+    
+    // incrementa pontos de experiencia
+    public void increaseExperience(int value) {
+    	this.xp += value;
+    }
 
     // aumenta de nível:
     public void levelUp(){
         this.level++;
+    	Console.levelUp(this);
     }
     
     // battle methods

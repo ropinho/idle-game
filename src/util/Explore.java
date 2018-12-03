@@ -1,5 +1,10 @@
 package util;
 
+<<<<<<< HEAD
+=======
+import gui.PlayFrame;
+import out.Console;
+>>>>>>> ronald
 import personagem.*;
 import util.Battle1v1;
 
@@ -18,21 +23,38 @@ public class Explore extends java.lang.Thread {
 		int i=0;
 		
 		while(true) {
-			System.out.print("Explorando...\n");
+			Console.print("Explorando...");
 			
+<<<<<<< HEAD
 			if (++i % 3 == 0) {
 				ENEMY = Creator.generateEnemy();
 				System.out.printf("%s encontrou um inimigo %s\n", HERO.getName(), ENEMY.getName());
+=======
+			if (++i % 4 == 0) {
+				ENEMY = Creator.generateEnemy();
+				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName());
+>>>>>>> ronald
 				
 				battle = new Battle1v1(HERO, ENEMY);
 				battle.start();
 				
 				if (battle.winner() == HERO) {
 					Console.printEndOfBattle(HERO);
+<<<<<<< HEAD
 					HERO.heal();
 				} else {
 					Console.printEndOfBattle(ENEMY);
 					Console.printGameOver();
+=======
+					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
+					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
+					HERO.heal(); // recupera HP
+					PlayFrame.idle.updateCharacterInfo();// atualiza aba de info do person.
+				} else {
+					Console.printEndOfBattle(ENEMY);
+					Console.printGameOver();
+					Console.printAllCharacterInfo(HERO);
+>>>>>>> ronald
 					break;
 				}
 			}
@@ -42,9 +64,6 @@ public class Explore extends java.lang.Thread {
 			} catch (InterruptedException ie) {
 				System.out.println(ie);
 			}
-			
-			// limite de 50 iterações. PARA TESTES
-			if (i==50) break;
 		}
 	}
 

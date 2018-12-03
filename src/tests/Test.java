@@ -1,6 +1,8 @@
 package tests;
 
 import java.util.Scanner;
+
+import out.Console;
 import util.Creator;
 import util.Explore;
 import personagem.Hero;
@@ -9,6 +11,7 @@ public class Test {
 	
   private static Scanner in;
   private static Explore exploration;
+<<<<<<< HEAD
 
   public static void main(String args[]){
 	in = new Scanner(System.in);
@@ -45,6 +48,20 @@ public class Test {
     } else {
     	exploration.start();
     }
+=======
+  private static Hero meuHeroi;
+  /*
+  public static void main(String args[]){
+	in = new Scanner(System.in);
+
+    meuHeroi = Creator.createHero("s", "Aluisio Lee");
+    exploration = new Explore(meuHeroi);
+
+    Console.printAllCharacterInfo(meuHeroi);
+
+    /* Start the loop *
+    exploration.start();
+>>>>>>> ronald
     
-  }
+  }*/
 }

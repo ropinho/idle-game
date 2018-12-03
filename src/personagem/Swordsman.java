@@ -1,11 +1,14 @@
 package personagem;
 
+import util.CureSkill;
+
 public class Swordsman extends Hero implements Job {
     
     public Swordsman(String name) {
         super(name);
         this.calculatePower();
         this.calculateAtack();
+        this.skills = new CureSkill();
     }
     
     

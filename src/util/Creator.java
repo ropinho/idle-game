@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import out.Console;
+
 import java.lang.Math;
 import personagem.*;
-import util.Console;
 
 public abstract class Creator {
 
@@ -22,7 +24,7 @@ public abstract class Creator {
     		if (classe.equals("a")) return (new Arrow(name));
     		if (classe.equals("m")) return (new Magician(name));
     	}
-    	return null;
+    	throw new NullPointerException();
     }
 
 
@@ -86,7 +88,7 @@ public abstract class Creator {
     	}
     	
     	// pega um valor aleatorio dentro do escopo do tamanho da lista
-    	int index = (int) (Math.random() * (listaDeInimigos.size()-1) );
+    	int index = (int) (Math.random() * (listaDeInimigos.size()) );
     
     	return new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
     

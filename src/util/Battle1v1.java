@@ -1,6 +1,8 @@
 package util;
 
+import out.Console;
 import personagem.Character;
+import personagem.Hero;
 
 public class Battle1v1 implements Battle {
 
@@ -16,15 +18,25 @@ public class Battle1v1 implements Battle {
 	
 	@Override
 	public void start() {
-		int damage;
+		int damage, cureskill=1;
 		Character atk, def, aux;
 		
-		System.out.printf("BATTLE!! %s VS %s \n", FIGHTER_1.getName(), FIGHTER_2.getName());
+		Console.print("BATTLE!! "+ FIGHTER_1.getName() +" VS "+ FIGHTER_2.getName());
 		
-		atk = FIGHTER_1;
-		def = FIGHTER_2;
+		atk = FIGHTER_1; // atk = personagem atacante
+		def = FIGHTER_2; // def = personagen atacado
 		
 		while (FIGHTER_1.getHp() > 0 && FIGHTER_2.getHp() > 0) {
+			
+			/* Test of skill of cure */
+			if (def instanceof Hero  &&  def.getHp() <= 200 && cureskill > 0) {
+				try {
+					def.skills.use(def, SkillID.CURE);
+					cureskill--;
+				} catch (Exception e) {
+					System.out.println("skills.use(): " + e.toString());
+				}
+			}
 			
 			damage = atk.atack(def);
 			def.setHp(def.getHp() - damage);
@@ -33,20 +45,24 @@ public class Battle1v1 implements Battle {
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException ie) {
-				System.err.println(ie.toString());
+				System.err.println("ThreadSleep(): "+ ie.toString());
 			}
 			
-			// troca
+			// change turns
 			aux = atk;
 			atk = def;
 			def = aux;
 		}
 		
+		finish();
 	}
 	
 	@Override
 	public void finish() {
-		
+		Character c = winner();
+		if (c instanceof Hero) {
+			((Hero) c).recalculateLevel();
+		}
 	}
 	
 	@Override
