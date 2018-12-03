@@ -43,7 +43,7 @@ public class Battle1v1 implements Battle {
 			Console.printAtackLog(atk, def, damage);
 			
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(2000);
 			} catch (InterruptedException ie) {
 				System.err.println("ThreadSleep(): "+ ie.toString());
 			}

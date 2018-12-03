@@ -61,7 +61,7 @@ public abstract class Creator {
     /*
      * Gerar um inimigo randomicamente a partir de um arquivo
      */
-    public static Enemy generateEnemy() {
+    public static Enemy generateEnemy(int level) {
     	
     	BufferedReader buff;
     	List<String[]> listaDeInimigos = new ArrayList<String[]>();
@@ -88,9 +88,9 @@ public abstract class Creator {
     	}
     	
     	// pega um valor aleatorio dentro do escopo do tamanho da lista
-    	int index = (int) (Math.random() * (listaDeInimigos.size()) );
+    	int index = (int) ( Math.random() * (listaDeInimigos.size()) );
     
-    	return new Enemy(listaDeInimigos.get(index)[0], Integer.parseInt(listaDeInimigos.get(index)[1]));
+    	return new Enemy(listaDeInimigos.get(index)[0], level);
     
     }
     

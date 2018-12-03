@@ -1,10 +1,7 @@
 package util;
 
-<<<<<<< HEAD
-=======
 import gui.PlayFrame;
 import out.Console;
->>>>>>> ronald
 import personagem.*;
 import util.Battle1v1;
 
@@ -25,27 +22,15 @@ public class Explore extends java.lang.Thread {
 		while(true) {
 			Console.print("Explorando...");
 			
-<<<<<<< HEAD
-			if (++i % 3 == 0) {
-				ENEMY = Creator.generateEnemy();
-				System.out.printf("%s encontrou um inimigo %s\n", HERO.getName(), ENEMY.getName());
-=======
-			if (++i % 4 == 0) {
-				ENEMY = Creator.generateEnemy();
-				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName());
->>>>>>> ronald
+			if (++i % 5 == 0) {
+				ENEMY = Creator.generateEnemy(HERO.getLevel() + (int)Math.random()*2); // cria inimigo do nível do herói
+				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName() + " level "+ ENEMY.getLevel());
 				
 				battle = new Battle1v1(HERO, ENEMY);
 				battle.start();
 				
 				if (battle.winner() == HERO) {
 					Console.printEndOfBattle(HERO);
-<<<<<<< HEAD
-					HERO.heal();
-				} else {
-					Console.printEndOfBattle(ENEMY);
-					Console.printGameOver();
-=======
 					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
 					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
 					HERO.heal(); // recupera HP
@@ -54,18 +39,15 @@ public class Explore extends java.lang.Thread {
 					Console.printEndOfBattle(ENEMY);
 					Console.printGameOver();
 					Console.printAllCharacterInfo(HERO);
->>>>>>> ronald
 					break;
 				}
 			}
 			
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 			} catch (InterruptedException ie) {
 				System.out.println(ie);
 			}
 		}
 	}
-
-
 }
