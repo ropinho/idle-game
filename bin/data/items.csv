@@ -1,7 +1,7 @@
-Nome,Level
-Espada Longa,2,s
-Espada Curta,2,s
-Arco de fogo,2,a
-Lamina do Silencio,2,s
-Cetro de Bronze,2,m
-
+Nome,Level,tipo,ataque,defesa,hp
+Espada Longa,2,s,100,0,20
+Espada Curta,2,s,50,0,100
+Arco de fogo,2,a,200,0,0
+Lamina do Silencio,3,s,400,100,200
+Cetro de Bronze,2,m,100,100,100
+Elmo de purpurina,2,s,500,1000,300
