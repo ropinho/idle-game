@@ -22,9 +22,9 @@ public class Explore extends java.lang.Thread {
 		while(true) {
 			Console.print("Explorando...");
 			
-			if (++i % 4 == 0) {
-				ENEMY = Creator.generateEnemy();
-				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName());
+			if (++i % 5 == 0) {
+				ENEMY = Creator.generateEnemy(HERO.getLevel() + (int)Math.random()*2); // cria inimigo do nível do herói
+				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName() + " level "+ ENEMY.getLevel());
 				
 				battle = new Battle1v1(HERO, ENEMY);
 				battle.start();
@@ -44,7 +44,7 @@ public class Explore extends java.lang.Thread {
 			}
 			
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 			} catch (InterruptedException ie) {
 				System.out.println(ie);
 			}

@@ -37,7 +37,7 @@ public class PlayFrame extends JFrame {
 	private JPanel mainContainer;
 	private JTabbedPane multiAbas;
 	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings, auxPanel;
-	private static MenuGroup belowConsoleMenu;
+	private static MenuGroup belowConsoleMenu, characterMenu;
 	
 	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 18);
 	private static final Font INFO_FONT = new Font("Arial", Font.PLAIN, 18);
@@ -82,7 +82,7 @@ public class PlayFrame extends JFrame {
 		// criando multiplas abas
 		multiAbas = new JTabbedPane();
 		panelCharacter = new JPanel();
-		panelCharacter.setLayout(new GridLayout(1, 3));
+		panelCharacter.setLayout(new GridLayout(2, 1));
 		panelBag = new JPanel();
 		panelPlay = new JPanel();
 		panelPlay.setLayout(new GridLayout(2, 1));
@@ -95,14 +95,12 @@ public class PlayFrame extends JFrame {
 		JScrollPane scroll = new JScrollPane(console);
 		panelPlay.add(scroll);
 		
-		belowConsoleMenu = new MenuGroup("Boss", "[...(?)...]", "Skills");
-		panelPlay.add(belowConsoleMenu);
-		
 		
 		// Character tab ###################################//
 		auxPanel = new JPanel();
 		auxPanel.setLayout(new GridLayout(1,3));
-		panelCharacter.add(auxPanel);
+		JScrollPane scrollCh = new JScrollPane(auxPanel);
+		panelCharacter.add(scrollCh);
 		
 		/* adding all tabs */
 		multiAbas.add("Personagem", panelCharacter);
