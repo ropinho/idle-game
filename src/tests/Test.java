@@ -9,7 +9,7 @@ import personagem.*;
 
 
 import item.Item;
-
+import map.Map;
 
 public class Test {
 	
@@ -17,6 +17,8 @@ public class Test {
   private static Explore exploration;
   private static Hero meuHeroi;
   private static Item Equip;
+
+  private static Map mapa;
 
   public static void main(String args[]){
 	  in = new Scanner(System.in);
@@ -28,8 +30,10 @@ public class Test {
 
     Equip = Creator.generateEquipment("s");
     Console.printEquip(Equip);
-    
-
+ 
+    mapa = Creator.creatorMap(2, "s");
+    System.out.println(mapa.getFase());
+/*
     Console.printAllCharacterInfo(meuHeroi);
 
     System.out.println("Iniciar jogo? [y/n]");
@@ -41,6 +45,6 @@ public class Test {
     } else {
     	exploration.start();
     }
-    
+*/    
   }
 }

@@ -140,7 +140,6 @@ public abstract class Creator {
 	public static Map creatorMap(int level, String characterClass){
 		BufferedReader buff;
 	
-		//List<String[]> listMap = new ArrayList<String[]>();
 		String line;
 		String[] data = new String[6]; //Como vai ficar dividida a string
 	
@@ -156,9 +155,7 @@ public abstract class Creator {
 	
 				data = line.split(",");
 				
-				
-				if(level < Integer.parseInt(data[1].intern()))
-					break; 
+				if(level < Integer.parseInt(data[1].intern()))	break; 
 			}
 	
 			buff.close();
@@ -166,10 +163,6 @@ public abstract class Creator {
 			System.out.printf("Erro: %s", e.toString());
 		}
 	
-		//int index = (int) (Math.random() * (listEquipment.size()));
-	
-
 		return new Map(data[0], Integer.parseInt(data[1]) , data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[1])); 
-		
 	}
 }
