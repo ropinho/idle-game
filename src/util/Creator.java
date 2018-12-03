@@ -16,6 +16,7 @@ import personagem.*;
 import util.Console;
 import item.*;
 
+import map.Map;
 
 public abstract class Creator {
 
@@ -31,7 +32,6 @@ public abstract class Creator {
     	}
     	return null;
     }
-
 
     public static void distributePoints(int points, Hero hero) {
       in = new Scanner(System.in);
@@ -137,10 +137,10 @@ public abstract class Creator {
 						Integer.parseInt(listEquipment.get(index)[5]) );
 	} 
 
-	public static void creatorMap(int level, String characterClass){
+	public static Map creatorMap(int level, String characterClass){
 		BufferedReader buff;
 	
-		List<String[]> listMap = new ArrayList<String[]>();
+		//List<String[]> listMap = new ArrayList<String[]>();
 		String line;
 		String[] data = new String[6]; //Como vai ficar dividida a string
 	
@@ -157,7 +157,8 @@ public abstract class Creator {
 				data = line.split(",");
 				
 				
-				if(level < data[1].intern()) break; 
+				if(level < Integer.parseInt(data[1].intern()))
+					break; 
 			}
 	
 			buff.close();
@@ -167,20 +168,8 @@ public abstract class Creator {
 	
 		//int index = (int) (Math.random() * (listEquipment.size()));
 	
-		
 
-		if(characterClass.equals(data[2])){
-			
-			//return (data[0], Integer.parseInt(data[1].intern()) , data[2], Integer.parseInt(data[3].intern()), Integer.parseInt(data[4].intern()), Integer.parseInt(data[1].intern())); 
-
-			return(listEquipment.get(0)[0], 
-					Integer.parseInt(listEquipment.get(0)[1]), 
-					listEquipment.get(0)[2], 
-					Integer.parseInt(listEquipment.get(0)[3]), 
-					Integer.parseInt(listEquipment.get(0)[4]),
-					Integer.parseInt(listEquipment.get(0)[5]) );
-			
-		}
+		return new Map(data[0], Integer.parseInt(data[1]) , data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[1])); 
 		
 	}
 }
