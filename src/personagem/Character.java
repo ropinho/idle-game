@@ -18,14 +18,7 @@ public abstract class Character {
     protected int speed;
     protected int defense;
     protected int power;
-    
-<<<<<<< HEAD
-=======
-    protected int[] attributes = new int[6];
-    protected final String[] attrNames = new String[6];
-    
-    public Skill skills;
->>>>>>> ronald
+
 
     public Character(String name){
         this.name = name;
