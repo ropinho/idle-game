@@ -50,6 +50,4 @@ public class Explore extends java.lang.Thread {
 			}
 		}
 	}
-
-
 }

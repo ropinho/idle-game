@@ -10,6 +10,8 @@ public abstract class Character {
     protected String name;
     protected int level;
     protected long xp;
+    protected int[] attributes = new int[6];
+    protected final String[] attrNames = new String[6];
     //// atributos dependentes
     protected int hp;
     protected int atack;
@@ -17,10 +19,13 @@ public abstract class Character {
     protected int defense;
     protected int power;
     
+<<<<<<< HEAD
+=======
     protected int[] attributes = new int[6];
     protected final String[] attrNames = new String[6];
     
     public Skill skills;
+>>>>>>> ronald
 
     public Character(String name){
         this.name = name;
@@ -56,7 +61,6 @@ public abstract class Character {
     public String[] getAttrNames() {return this.attrNames;}
 
     public int[] getAttributes(){return attributes;}
-    public int[] setAttributes(){return attributes;}
 
     public int getAttribute(int index){return attributes[index];}
     public int setAttribute(int index, int setAttribute){return attributes[index] = setAttribute;}
