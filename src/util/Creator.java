@@ -65,6 +65,7 @@ public abstract class Creator {
     /*
      * Gerar um inimigo randomicamente a partir de um arquivo
      */
+
     public static Enemy generateEnemy() {
     	
     	BufferedReader buff;
@@ -98,7 +99,7 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment(String classe){
+	public static Item generateEquipment(String characterClass){
 		BufferedReader buff;
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
@@ -117,7 +118,7 @@ public abstract class Creator {
 
 				data = line.split(",");
 
-				if(classe.equals(data[2])) listEquipment.add(data); //Verifica se o item é da classe do personagem
+				if(characterClass.equals(data[2])) listEquipment.add(data); //Verifica se o item é da classe do personagem
 			}
 
 			buff.close();
@@ -135,4 +136,51 @@ public abstract class Creator {
 						Integer.parseInt(listEquipment.get(index)[4]),
 						Integer.parseInt(listEquipment.get(index)[5]) );
 	} 
+
+	public static void creatorMap(int level, String characterClass){
+		BufferedReader buff;
+	
+		List<String[]> listMap = new ArrayList<String[]>();
+		String line;
+		String[] data = new String[6]; //Como vai ficar dividida a string
+	
+		try{
+			//Open archive
+			buff = new BufferedReader(new FileReader("data/maps.csv"));
+			line = buff.readLine();
+			
+			while(line != null){
+				line = buff.readLine();
+	
+				if(line == null) break;
+	
+				data = line.split(",");
+				
+				
+				if(level < data[1].intern()) break; 
+			}
+	
+			buff.close();
+		}catch(IOException e){
+			System.out.printf("Erro: %s", e.toString());
+		}
+	
+		//int index = (int) (Math.random() * (listEquipment.size()));
+	
+		
+
+		if(characterClass.equals(data[2])){
+			
+			//return (data[0], Integer.parseInt(data[1].intern()) , data[2], Integer.parseInt(data[3].intern()), Integer.parseInt(data[4].intern()), Integer.parseInt(data[1].intern())); 
+
+			return(listEquipment.get(0)[0], 
+					Integer.parseInt(listEquipment.get(0)[1]), 
+					listEquipment.get(0)[2], 
+					Integer.parseInt(listEquipment.get(0)[3]), 
+					Integer.parseInt(listEquipment.get(0)[4]),
+					Integer.parseInt(listEquipment.get(0)[5]) );
+			
+		}
+		
+	}
 }
