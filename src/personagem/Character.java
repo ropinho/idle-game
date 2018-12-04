@@ -1,8 +1,6 @@
 package personagem;
 
 import out.Console;
-import util.CureSkill;
-import util.Skill;
 
 public abstract class Character {
 
@@ -15,10 +13,8 @@ public abstract class Character {
     //// atributos dependentes
     protected int hp;
     protected int atack;
-    protected int speed;
     protected int defense;
     protected int power;
-
 
     public Character(String name){
         this.name = name;
@@ -33,9 +29,8 @@ public abstract class Character {
         this.attrNames[3] = "Inteligência";
         this.attrNames[4] = "Sorte";
         this.attrNames[5] = "Vitalidade";
-        this.power = this.atack = 100;
-        
-        skills = new CureSkill();
+
+        this.power = this.defense = this.atack = 100;
     }
 
     /* getters and setters */
@@ -60,9 +55,6 @@ public abstract class Character {
 
     public int getAtack() {return atack;}
     public void setAtack(int a) {this.atack = a;}
-
-    public int getSpeed() {return speed;}
-    public void setSpeed(int v) {this.speed = v;}
 
     public int getDefense() {return defense;}
     public void setDefense(int d) {this.defense = d;}

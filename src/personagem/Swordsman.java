@@ -8,7 +8,6 @@ public class Swordsman extends Hero implements Job {
         super(name);
         this.calculatePower();
         this.calculateAtack();
-        this.skills = new CureSkill();
     }
     
     

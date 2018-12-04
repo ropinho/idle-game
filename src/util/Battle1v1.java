@@ -31,7 +31,7 @@ public class Battle1v1 implements Battle {
 			/* Test of skill of cure */
 			if (def instanceof Hero  &&  def.getHp() <= 200 && cureskill > 0) {
 				try {
-					def.skills.use(def, SkillID.CURE);
+					//def.skills.use(def, SkillID.CURE); // usar skill
 					cureskill--;
 				} catch (Exception e) {
 					System.out.println("skills.use(): " + e.toString());

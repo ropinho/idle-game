@@ -22,12 +22,16 @@ public abstract class Bag {
     	return maxWeight;
     }
     
+    /*
+     *  Só vai funcionar quando adicionar o peso em item
+     * 
     public static float weight() {
     	float w = 0;
     	for (Item i : slot)
-    		w += i.getWeight();
+    		w += i.getWeight(); 
     	return w;
     }
+    */
     
     public static void upgradeCapacity() {
     	slotCapacity += 0.5;
@@ -43,6 +47,7 @@ public abstract class Bag {
     	upgradeSize();
     }
     
+    /*
     public static void add(Item item){
         if (slot.size() < maxSize) {
             // se o tamanho da lista for menor que o tamanho máximo suportado pela mochila
@@ -63,5 +68,5 @@ public abstract class Bag {
         System.out.printf("Peso total: %.2fkg (máx: %.1fkg)\n", weight(), maxWeight);
         System.out.println("---------------------------------");
     }
-
+    */
 }

@@ -152,7 +152,6 @@ public class PlayFrame extends JFrame {
 		textArea[1].append("\nHP:\t"+ idle.HERO.getHp());
 		textArea[1].append("\nAtaque:\t"+ idle.HERO.getAtack());
 		textArea[1].append("\nDefesa:\t"+ idle.HERO.getDefense());
-		textArea[1].append("\nVelocidade:\t"+ idle.HERO.getSpeed());
 		textArea[1].append("\nPower:\t"+ idle.HERO.getPower());
 		
 		textArea[2].setText("Equipamento\n\n");

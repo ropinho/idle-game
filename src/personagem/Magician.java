@@ -39,6 +39,7 @@ public class Magician extends Hero implements Job {
         }
         this.atack = (int) this.atack / 9;
     }
+
     
     @Override
     public void calculateDefense() {

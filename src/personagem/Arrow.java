@@ -52,4 +52,5 @@ public class Arrow extends Hero implements Job {
         }
         this.atack = (int) this.atack / 9;
     }
+
 }

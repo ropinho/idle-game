@@ -20,6 +20,7 @@ public class Explore extends java.lang.Thread {
 		int i=0;
 		
 		while(true) {
+
 			Console.print("Explorando...");
 			
 			if (++i % 5 == 0) {
