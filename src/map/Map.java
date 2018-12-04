@@ -15,8 +15,7 @@ public class Map{
         this.hp = hp;
     }
 
-
-    public String getFase() {
+	public String getFase() {
         return this.fase;
     }
 
