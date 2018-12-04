@@ -11,6 +11,7 @@ public class Hero extends Character implements Job {
 	
     public Hero(String name) {
         super(name);
+        this.hp = 800;
         this.HEALTH = this.hp;
         this.EXP = 50;
     }
