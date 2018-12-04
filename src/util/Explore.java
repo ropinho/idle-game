@@ -17,9 +17,11 @@ public class Explore extends java.lang.Thread {
 	private Battle1v1 battle;
 	private Map map;
 	private Item items;
+	private boolean exit; 
 	
 	public Explore (Hero h) {
 		this.HERO = h;
+		this.exit = false;
 	}
 	
 	@Override
@@ -27,7 +29,7 @@ public class Explore extends java.lang.Thread {
 		
 		int i=0;
 		
-		while(true) {
+		while(!this.exit) {
 			map = Creator.creatorMap(HERO.getLevel()); // Inicializa a fase conforme o nivel do personagem
 			//Console.printMap(map); // Printa a fase em questao e seu nivel
 			
@@ -62,10 +64,13 @@ public class Explore extends java.lang.Thread {
 					
 					HERO.heal(); // recupera HP
 					PlayFrame.idle.updateCharacterInfo();// atualiza aba de info do person.
-				} else {
+					
+				} else { // se o inimigo vencer
+					
 					Console.printEndOfBattle(ENEMY);
 					Console.printGameOver();
 					Console.printAllCharacterInfo(HERO);
+					
 					break;
 				}
 			}
@@ -76,5 +81,19 @@ public class Explore extends java.lang.Thread {
 				System.out.println(ie);
 			}
 		}
+	}
+	
+	
+	public void reRun() {
+		run();
+	}
+	
+	
+	public boolean getExit() {
+		return this.exit;
+	}
+	
+	public void setExit(boolean b) {
+		this.exit = b;
 	}
 }

@@ -1,6 +1,6 @@
 package out;
 
-import gui.PlayFrame;
+import gui.*;
 import personagem.Character;
 import personagem.Hero;
 
@@ -41,7 +41,7 @@ public abstract class Console {
 	
 	
 	public static void printGameOver() {
-		print("DEVEU! GAME OVER!");
+		print("GAME OVER! DEVEU!");
 	}
 	
 	
@@ -58,6 +58,15 @@ public abstract class Console {
 	
 	public static void updateCharacterInfo() {
 		PlayFrame.idle.updateCharacterInfo();
+	}
+	
+	
+	/*
+	 * Pergunta ao usuário se deseja reviver, ou seja, continuar o jogo após morrer
+	 */
+	public static void askToContinue() {
+		System.out.println("Perguntando sobre reviver");
+		PlayFrame.idle.launchAsk();
 	}
 	
 }

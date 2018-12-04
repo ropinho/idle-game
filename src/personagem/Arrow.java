@@ -1,6 +1,6 @@
 package personagem;
 
-public class Arrow extends Hero implements Job {
+public class Arrow extends Hero {
     
     public Arrow(String name) {
         super(name);

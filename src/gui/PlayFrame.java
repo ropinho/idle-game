@@ -24,6 +24,7 @@ public class PlayFrame extends JFrame {
 	static JTextArea console;
 	static JTextArea bagInfo;
 	static JTextArea textArea[] =  new JTextArea[3];
+	static Ask ask;
 	
 	/* private */
 	private JPanel mainContainer;

@@ -45,6 +45,7 @@ public class Controller {
 		PlayFrame.updateCharacterInfo();
 	}
 	
+	
 	public void createHero(String cls, String name) {
 		try {
 			HERO = Creator.createHero(cls, name);
@@ -52,5 +53,14 @@ public class Controller {
 		} catch(NullPointerException e) {
 			System.out.println("CreateHero(): "+ e.toString());
 		}
+	}
+	
+
+	/*
+	 * Lança janela de pergunta
+	 */
+	public void launchAsk() {
+		PlayFrame.ask = new Ask();
+		PlayFrame.ask.setVisible(true);
 	}
 }
