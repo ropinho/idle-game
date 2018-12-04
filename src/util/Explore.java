@@ -3,6 +3,7 @@ package util;
 import out.Console;
 import personagem.*;
 import util.Battle1v1;
+import java.lang.Math;
 
 public class Explore extends java.lang.Thread {
 	
@@ -31,7 +32,7 @@ public class Explore extends java.lang.Thread {
 				
 				if (battle.winner() == HERO) {
 					int n = ENEMY.getLevel(); // calcula experiencia
-					int xp = 100*n + (int)1.5*n*n + 630 * (int)(n/20)*(n/20)*(n/20)*(n/20);
+					int xp = 100*n + (int)1.5*n*n + 630 * (int)(Math.pow(n, 4));
 					/* Encontrado em:
 					 * https://www.wakfu.com/pt/forum/16-discussoes-gerais-interesse-geral/7098-
 					 * como-feito-o-calculo-experiencia-necessaria-passar-nivel */
