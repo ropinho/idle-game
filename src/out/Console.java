@@ -4,6 +4,9 @@ import gui.PlayFrame;
 import personagem.Character;
 import personagem.Hero;
 
+import item.Item;
+import map.Map;
+
 public abstract class Console {
 		
 	
@@ -52,5 +55,16 @@ public abstract class Console {
 		print(s);	
 	}
 	
+	public static void printEquip(Item equip){
+		System.out.println("Item: " + equip.getName()
+							+ " \nlevel: " + equip.getLevel() 
+							+ "\nAtack: " + equip.getAtack()
+							+ "\nDefense: " + equip.getDefense() 
+							+ "\nHp: " + equip.getHp());
+	}
+
+	public static void printMap(Map fase) {
+		System.out.println("Fase: " + fase.getFase() + " - Nivel: " + fase.getLevel());
+	}
 
 }
