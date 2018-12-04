@@ -4,6 +4,7 @@ import personagem.Character;
 import personagem.Hero;
 
 import item.Item;
+import map.Map;
 /*
  * Módulo criado para impressão de logs, instruções e informações no terminal
  * */
@@ -52,5 +53,8 @@ public abstract class Console {
 							+ "\nAtack: " + equip.getAtack()
 							+ "\nDefense: " + equip.getDefense() 
 							+ "\nHp: " + equip.getHp());
+	}
+	public static void printMap(Map fase) {
+		System.out.println("Fase: " + fase.getFase() + " - Nivel: " + fase.getLevel());
 	}
 }

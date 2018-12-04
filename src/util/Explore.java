@@ -1,15 +1,21 @@
 package util;
 
 import gui.PlayFrame;
+import item.Item;
 import out.Console;
 import personagem.*;
 import util.Battle1v1;
+
+import map.Map;
+import util.Creator;
 
 public class Explore extends java.lang.Thread {
 	
 	private Hero HERO;
 	private Enemy ENEMY;
 	private Battle1v1 battle;
+	private Map map;
+	private Item items;
 	
 	public Explore (Hero h) {
 		this.HERO = h;
@@ -20,8 +26,10 @@ public class Explore extends java.lang.Thread {
 		int i=0;
 		
 		while(true) {
-
-			Console.print("Explorando...");
+			map = Creator.creatorMap(HERO.getLevel()); // Inicializa a fase conforme o nivel do personagem
+			//Console.printMap(map); // Printa a fase em questao e seu nivel
+			
+			Console.print("Fase: " + map.getFase() + " - Nivel: " + map.getLevel() + "  Explorando...");
 			
 			if (++i % 5 == 0) {
 				ENEMY = Creator.generateEnemy(HERO.getLevel() + (int)Math.random()*2); // cria inimigo do nível do herói
@@ -34,6 +42,15 @@ public class Explore extends java.lang.Thread {
 					Console.printEndOfBattle(HERO);
 					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
 					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
+					
+					items = Creator.generateEquipment(map.getLevel(), HERO.getJOB());
+					
+					Console.print("Item: " + items.getName()
+							+ " \nlevel: " + items.getLevel() 
+							+ "\nAtack: " + items.getAtack()
+							+ "\nDefense: " + items.getDefense() 
+							+ "\nHp: " + items.getHp());
+					
 					HERO.heal(); // recupera HP
 					PlayFrame.idle.updateCharacterInfo();// atualiza aba de info do person.
 				} else {
