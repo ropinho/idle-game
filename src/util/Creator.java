@@ -96,7 +96,7 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment(int level, String characterClass){
+	public static Item generateEquipment(int levelFase, String characterClass){
 		BufferedReader buff;
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
@@ -116,8 +116,8 @@ public abstract class Creator {
 				data = line.split(",");
 				
 				//Level seria da fase que ele está e não do personagem
-				if(level > Integer.parseInt(data[1])) // Verifica se o level da fase é maior que o level do item
-					if(characterClass.equals(data[2])  || "x" == data[2]) listEquipment.add(data); //Verifica se o item é da classe do personagem ou se é uma poção
+				if(levelFase > Integer.parseInt(data[1])) // Verifica se o levelFase da fase é maior que o levelFase do item
+					if((characterClass.equals(data[2]))  || ("x" == data[2].intern())) listEquipment.add(data); //Verifica se o item é da classe do personagem ou se é uma poção
 			}
 
 			buff.close();
@@ -127,7 +127,7 @@ public abstract class Creator {
 		
 		int index = (int) (Math.random() * (listEquipment.size()));
 		
-		//Retorna todos os parametrôs com, item, level, peso, class, atack, def e hp
+		//Retorna todos os parametrôs com, item, levelFase, peso, class, atack, def e hp
 		return new Item(listEquipment.get(index)[0], 
 						Integer.parseInt(listEquipment.get(index)[1]),
 						listEquipment.get(index)[2],
