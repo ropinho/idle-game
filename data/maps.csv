@@ -1,4 +1,4 @@
-fase, level, classe, atack, def, hp
-
-Tundra infame,5,s,100,100,100
-Templo Elisio,10,m,100,100,100
+fase, level, atack, def, hp
+,,,,
+Tundra infame,5,100,100,100
+Templo Elisio,10,100,100,100
