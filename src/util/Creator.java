@@ -95,12 +95,12 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment(String characterClass){
+	public static Item generateEquipment(int levelFase, String characterClass){
 		BufferedReader buff;
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[7]; //Como vai ficar dividida a string
+		String[] data = new String[7]; //Separação das String
 
 		try{
 			//Open archive
@@ -113,8 +113,10 @@ public abstract class Creator {
 				if(line == null) break;
 
 				data = line.split(",");
-
-				if(characterClass.equals(data[2])) listEquipment.add(data); //Verifica se o item é da classe do personagem
+				
+				//Level seria da fase que ele está e não do personagem
+				if(levelFase > Integer.parseInt(data[1])) // Verifica se o levelFase da fase é maior que o levelFase do item
+					if((characterClass.equals(data[2]))  || ("x" == data[2].intern())) listEquipment.add(data); //Verifica se o item é da classe do personagem ou se é uma poção
 			}
 
 			buff.close();
@@ -124,7 +126,7 @@ public abstract class Creator {
 		
 		int index = (int) (Math.random() * (listEquipment.size()));
 		
-		//Retorna todos os parametrôs com, item, level, peso, class, atack, def e hp
+		//Retorna todos os parametrôs com, item, levelFase, peso, class, atack, def e hp
 		return new Item(listEquipment.get(index)[0], 
 						Integer.parseInt(listEquipment.get(index)[1]),
 						listEquipment.get(index)[2],
@@ -134,11 +136,11 @@ public abstract class Creator {
 						Integer.parseInt(listEquipment.get(index)[6]) );
 	} 
 
-	public static Map creatorMap(int level, String characterClass){
+	public static Map creatorMap(int level){
 		BufferedReader buff;
 	
 		String line;
-		String[] data = new String[6]; //Como vai ficar dividida a string
+		String[] data = new String[5]; //Separação das String
 	
 		try{
 			//Open archive
@@ -152,7 +154,7 @@ public abstract class Creator {
 	
 				data = line.split(",");
 				
-				if(level < Integer.parseInt(data[1].intern()))	break; 
+				if(level < Integer.parseInt(data[1].intern())) break; 
 			}
 	
 			buff.close();
@@ -160,6 +162,6 @@ public abstract class Creator {
 			System.out.printf("Erro: %s", e.toString());
 		}
 	
-		return new Map(data[0], Integer.parseInt(data[1]) , data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[1])); 
+		return new Map(data[0], Integer.parseInt(data[1]) , Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])); 
 	}
 }

@@ -4,6 +4,9 @@ import gui.PlayFrame;
 import personagem.Character;
 import personagem.Hero;
 
+import item.Item;
+import map.Map;
+
 public abstract class Console {
 		
 	
@@ -57,5 +60,4 @@ public abstract class Console {
 		PlayFrame.idle.updateCharacterInfo();
 	}
 	
-
 }

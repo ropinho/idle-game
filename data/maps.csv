@@ -1,3 +1,6 @@
-fase, level, classe, atack, def, hp
-
-Tundra infame, 5, s, 100, 100, 100
+fase, level, atack, def, hp
+Tundra infame,5,100,100,100
+Templo Elisio,7,130,130,130
+Floresta Perdida,10,200,200,150
+Deserto gelado,12,240,110,250
+Cidadela Tempestuosa,18,400,350,380
