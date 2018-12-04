@@ -8,9 +8,10 @@ public class Controller {
 	
 	public Explore exploration;
 	public Hero HERO;
+	public int pointsToDistrib;
 	
 	public Controller() {
-		
+		pointsToDistrib = 50;
 	}
 	
 	/*

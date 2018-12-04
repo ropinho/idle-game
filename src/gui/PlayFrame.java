@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -95,23 +97,11 @@ public class PlayFrame extends JFrame {
 		panelPlay.add(scroll);
 		
 		
-		// Character tab ###################################//
+		// Character tab ###################################################//
 		auxPanel = new JPanel();
 		auxPanel.setLayout(new GridLayout(1,3));
 		JScrollPane scrollCh = new JScrollPane(auxPanel);
 		panelCharacter.add(scrollCh);
-		
-		JPanel below = new JPanel();
-		below.setLayout(new GridLayout(1,2));
-		JPanel jp1 = new JPanel();
-		jp1.setLayout(new BorderLayout());
-		JLabel title1 = new JLabel("Distribuição de pontos");
-		jp1.add(title1, BorderLayout.NORTH);
-		below.add(jp1);
-		JPanel jp2 = new JPanel();
-		jp2.setLayout(new BorderLayout());
-		below.add(jp2);
-		panelCharacter.add(below);
 		
 		
 		/* adding all tabs */
@@ -132,6 +122,7 @@ public class PlayFrame extends JFrame {
 			textArea[i].setFont(INFO_FONT);
 			textArea[i].setBounds(0,0, 64, 72);
 			//textArea[i].setBorder(BorderFactory.createLineBorder(Color.black, 1));
+			panelCharacter.add(new CharacterTab());
 		}
 
 		updateCharacterInfo();
