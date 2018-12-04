@@ -64,7 +64,10 @@ public class CharacterTab extends JPanel {
 	
 	private void addFunctionOfButton() {
 		btnSubmit[0].addActionListener(new ActionListener() {
-			
+			/*
+			 * Função de atualizar os pontos de atributos de acordo
+			 * com os valores diigitados nos campos
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -88,6 +91,9 @@ public class CharacterTab extends JPanel {
 					PlayFrame.idle.pointsToDistrib = PlayFrame.idle.pointsToDistrib - soma;
 					System.out.printf("Incrementando os atributos: SOMA = %d", soma);
 					titulo[0].setText("Distribuir pontos: "+ PlayFrame.idle.pointsToDistrib);
+					PlayFrame.idle.HERO.calculateAtack();
+					PlayFrame.idle.HERO.calculateDefense();
+					PlayFrame.idle.HERO.calculatePower();
 					PlayFrame.updateCharacterInfo();
 					
 				}
