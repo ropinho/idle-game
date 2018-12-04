@@ -137,7 +137,7 @@ public abstract class Creator {
 						Integer.parseInt(listEquipment.get(index)[6]) );
 	} 
 
-	public static Map creatorMap(int level, String characterClass){
+	public static Map creatorMap(int level){
 		BufferedReader buff;
 	
 		String line;
@@ -155,7 +155,7 @@ public abstract class Creator {
 	
 				data = line.split(",");
 				
-				if(level < Integer.parseInt(data[1].intern()))	break; 
+				if(level < Integer.parseInt(data[1].intern())) break; 
 			}
 	
 			buff.close();
