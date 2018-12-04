@@ -17,6 +17,7 @@ public class Explore extends java.lang.Thread {
 	
 	@Override
 	public void run() {
+		
 		int i=0;
 		
 		while(true) {
@@ -24,6 +25,7 @@ public class Explore extends java.lang.Thread {
 			Console.print("Explorando...");
 			
 			if (++i % 5 == 0) {
+				
 				ENEMY = Creator.generateEnemy(HERO.getLevel() + (int)Math.random()*2); // cria inimigo do nível do herói
 				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName() + " level "+ ENEMY.getLevel());
 				
