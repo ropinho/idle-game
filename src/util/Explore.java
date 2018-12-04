@@ -1,6 +1,5 @@
 package util;
 
-import gui.PlayFrame;
 import out.Console;
 import personagem.*;
 import util.Battle1v1;
@@ -31,11 +30,18 @@ public class Explore extends java.lang.Thread {
 				battle.start();
 				
 				if (battle.winner() == HERO) {
+					int n = ENEMY.getLevel(); // calcula experiencia
+					int xp = 100*n + (int)1.5*n*n + 630 * (int)(n/20)*(n/20)*(n/20)*(n/20);
+					/* Encontrado em:
+					 * https://www.wakfu.com/pt/forum/16-discussoes-gerais-interesse-geral/7098-
+					 * como-feito-o-calculo-experiencia-necessaria-passar-nivel */
+
 					Console.printEndOfBattle(HERO);
-					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
-					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
-					HERO.heal(); // recupera HP
-					PlayFrame.idle.updateCharacterInfo();// atualiza aba de info do person.
+					Console.printIncreaseXP(xp);
+							
+					HERO.increaseExperience(xp);  // ganha/incrementa XP
+					HERO.heal(); 				  // recupera HP
+					Console.updateCharacterInfo();// atualiza aba de info do person.
 				} else {
 					Console.printEndOfBattle(ENEMY);
 					Console.printGameOver();

@@ -41,7 +41,7 @@ public class PlayFrame extends JFrame {
 	
 	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 18);
 	private static final Font INFO_FONT = new Font("Arial", Font.PLAIN, 18);
-	private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
+	//private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
 	
 
 	/**
@@ -58,7 +58,6 @@ public class PlayFrame extends JFrame {
 					PlayFrame frame = new PlayFrame();
 					frame.setVisible(true);
 					frame.idle = new Controller();
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -101,6 +100,19 @@ public class PlayFrame extends JFrame {
 		auxPanel.setLayout(new GridLayout(1,3));
 		JScrollPane scrollCh = new JScrollPane(auxPanel);
 		panelCharacter.add(scrollCh);
+		
+		JPanel below = new JPanel();
+		below.setLayout(new GridLayout(1,2));
+		JPanel jp1 = new JPanel();
+		jp1.setLayout(new BorderLayout());
+		JLabel title1 = new JLabel("Distribuição de pontos");
+		jp1.add(title1, BorderLayout.NORTH);
+		below.add(jp1);
+		JPanel jp2 = new JPanel();
+		jp2.setLayout(new BorderLayout());
+		below.add(jp2);
+		panelCharacter.add(below);
+		
 		
 		/* adding all tabs */
 		multiAbas.add("Personagem", panelCharacter);

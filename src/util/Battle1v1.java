@@ -18,25 +18,15 @@ public class Battle1v1 implements Battle {
 	
 	@Override
 	public void start() {
-		int damage, cureskill=1;
+		int damage;
 		Character atk, def, aux;
-		
+	
 		Console.print("BATTLE!! "+ FIGHTER_1.getName() +" VS "+ FIGHTER_2.getName());
 		
 		atk = FIGHTER_1; // atk = personagem atacante
 		def = FIGHTER_2; // def = personagen atacado
 		
 		while (FIGHTER_1.getHp() > 0 && FIGHTER_2.getHp() > 0) {
-			
-			/* Test of skill of cure */
-			if (def instanceof Hero  &&  def.getHp() <= 200 && cureskill > 0) {
-				try {
-					//def.skills.use(def, SkillID.CURE); // usar skill
-					cureskill--;
-				} catch (Exception e) {
-					System.out.println("skills.use(): " + e.toString());
-				}
-			}
 			
 			damage = atk.atack(def);
 			def.setHp(def.getHp() - damage);

@@ -1,5 +1,7 @@
 package personagem;
 
+import out.Console;
+
 //import item.Equipment;
 
 public class Hero extends Character implements Job {
@@ -20,12 +22,18 @@ public class Hero extends Character implements Job {
     }
     
     public void recalculateLevel() {
-    	if (xp >= 2*EXP) {
-    		EXP = EXP*2;
+    	if (xp >= EXP + 2*EXP) {
+    		EXP += EXP*2;
     		levelUp();
     	}
     }
     
+    @Override
+    public void recalculateHP() {
+    	// hp x vitalidade
+    	this.hp = (int)(hp * attributes[5])/100;
+    	this.HEALTH = this.hp;
+    }
     
     @Override
     public String getJOB() {return "";} 
@@ -43,6 +51,22 @@ public class Hero extends Character implements Job {
 	@Override
 	public void calculateDefense() {
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void levelUp() {
+		/* Incrementa o level e
+    	 * aumenta em 10% cada atributo independente */
+        this.level++;
+        for (int i=0; i<6; i++) {
+        	attributes[i] += (int) (attributes[i] / 10);
+        }
+        recalculateHP();
+        calculateAtack();
+        calculateDefense();
+        calculatePower();
+        Console.updateCharacterInfo();
+    	Console.levelUp(this);
 	}
 
 }

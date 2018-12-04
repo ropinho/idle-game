@@ -16,6 +16,7 @@ public abstract class Character {
     protected int defense;
     protected int power;
 
+    
     public Character(String name){
         this.name = name;
         this.hp = 400;
@@ -79,9 +80,22 @@ public abstract class Character {
     	this.xp += value;
     }
 
+    public void recalculateHP() {
+    	// hp x vitalidade
+    	this.hp = (int)(hp * attributes[5])/100;
+    }
+    
+
     // aumenta de nível:
     public void levelUp(){
+    	/* Incrementa o level e
+    	 * aumenta em 10% cada atributo independente */
         this.level++;
+        for (int i=0; i<6; i++) {
+        	attributes[i] += (int) (attributes[i] / 10);
+        }
+        recalculateHP();
+        Console.updateCharacterInfo();
     	Console.levelUp(this);
     }
     

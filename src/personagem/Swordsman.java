@@ -1,7 +1,5 @@
 package personagem;
 
-import util.CureSkill;
-
 public class Swordsman extends Hero implements Job {
     
     public Swordsman(String name) {
