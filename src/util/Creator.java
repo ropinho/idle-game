@@ -141,7 +141,7 @@ public abstract class Creator {
 		BufferedReader buff;
 	
 		String line;
-		String[] data = new String[6]; //Separação das String
+		String[] data = new String[5]; //Separação das String
 	
 		try{
 			//Open archive
@@ -163,6 +163,6 @@ public abstract class Creator {
 			System.out.printf("Erro: %s", e.toString());
 		}
 	
-		return new Map(data[0], Integer.parseInt(data[1]) , data[2], Integer.parseInt(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[1])); 
+		return new Map(data[0], Integer.parseInt(data[1]) , Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])); 
 	}
 }
