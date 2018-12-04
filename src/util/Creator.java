@@ -101,7 +101,7 @@ public abstract class Creator {
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[6]; //Como vai ficar dividida a string
+		String[] data = new String[7]; //Como vai ficar dividida a string
 
 		try{
 			//Open archive
@@ -125,13 +125,14 @@ public abstract class Creator {
 		
 		int index = (int) (Math.random() * (listEquipment.size()));
 		
-		//Retorna todos os parametrôs com, item, level, class, atack, def e hp
+		//Retorna todos os parametrôs com, item, level, peso, class, atack, def e hp
 		return new Item(listEquipment.get(index)[0], 
 						Integer.parseInt(listEquipment.get(index)[1]),
-						listEquipment.get(index)[2], 
-						Integer.parseInt(listEquipment.get(index)[3]), 
-						Integer.parseInt(listEquipment.get(index)[4]),
-						Integer.parseInt(listEquipment.get(index)[5]) );
+						listEquipment.get(index)[2],
+						Float.parseFloat(listEquipment.get(index)[3]),
+						Integer.parseInt(listEquipment.get(index)[4]), 
+						Integer.parseInt(listEquipment.get(index)[5]),
+						Integer.parseInt(listEquipment.get(index)[6]) );
 	} 
 
 	public static Map creatorMap(int level, String characterClass){
