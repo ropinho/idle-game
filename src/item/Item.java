@@ -4,20 +4,22 @@ public class Item {
 
 	protected String name;
     protected int level;
+    protected float weight;
     protected String characterClass;
     protected int atack;
     protected int defense;
     protected int hp;
-    //protected float weight;
 
-    public Item(String name, int level, String characterClass, int atack, int defense, int hp /*, float weight*/) {
+
+    public Item(String name, int level, String characterClass,float weight, int atack, int defense, int hp) {
         this.name = name;
         this.level = level;
+        this.weight = weight;
         this.characterClass = characterClass;
         this.atack = atack;
         this.defense = defense;
         this.hp = hp;
-        //this.weight = weight;
+     
     }
 
     public String getName() {
@@ -34,6 +36,14 @@ public class Item {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public float getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public String getCharacterClass() {
@@ -67,15 +77,4 @@ public class Item {
     public void setHp(int hp) {
         this.hp = hp;
     }
-
-    /*
-    public float getWeight() {
-        return this.weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-    */
-      
 }
