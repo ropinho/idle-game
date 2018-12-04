@@ -6,6 +6,7 @@ public class Magician extends Hero implements Job {
         super(name);
         this.calculatePower();
         this.calculateAtack();
+        this.calculateDefense();
     }
     
     

@@ -8,9 +8,10 @@ public class Controller {
 	
 	public Explore exploration;
 	public Hero HERO;
+	public int pointsToDistrib;
 	
 	public Controller() {
-		
+		pointsToDistrib = 50;
 	}
 	
 	/*
@@ -45,7 +46,11 @@ public class Controller {
 	}
 	
 	public void createHero(String cls, String name) {
-		HERO = Creator.createHero(cls, name);
-		exploration = new Explore(HERO);
+		try {
+			HERO = Creator.createHero(cls, name);
+			exploration = new Explore(HERO);
+		} catch(NullPointerException e) {
+			System.out.println("CreateHero(): "+ e.toString());
+		}
 	}
 }

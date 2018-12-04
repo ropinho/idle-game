@@ -6,6 +6,7 @@ public class Arrow extends Hero implements Job {
         super(name);
         this.calculatePower();
         this.calculateAtack();
+        this.calculateDefense();
     }
     
     

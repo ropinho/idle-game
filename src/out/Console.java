@@ -31,17 +31,17 @@ public abstract class Console {
 	
 	public static void printAtackLog(Character c1, Character c2, int damage) {
 		String string = c1.getName() + "("+ c1.getHp() +") causou "+ damage +" de dano em "+ c2.getName() +"("+ c2.getHp() +")";
-		PlayFrame.idle.print(string);
+		print(string);
 	}
 	
 	
 	public static void printEndOfBattle(Character winner) {
-		PlayFrame.idle.print(winner.getName() + " VENCEU!");
+		print(winner.getName() + " VENCEU!");
 	}
 	
 	
 	public static void printGameOver() {
-		PlayFrame.idle.print("DEVEU! GAME OVER!");
+		print("DEVEU! GAME OVER!");
 	}
 	
 	
@@ -55,16 +55,9 @@ public abstract class Console {
 		print(s);	
 	}
 	
-	public static void printEquip(Item equip){
-		System.out.println("Item: " + equip.getName()
-							+ " \nlevel: " + equip.getLevel() 
-							+ "\nAtack: " + equip.getAtack()
-							+ "\nDefense: " + equip.getDefense() 
-							+ "\nHp: " + equip.getHp());
+	
+	public static void updateCharacterInfo() {
+		PlayFrame.idle.updateCharacterInfo();
 	}
-
-	public static void printMap(Map fase) {
-		System.out.println("Fase: " + fase.getFase() + " - Nivel: " + fase.getLevel());
-	}
-
+	
 }

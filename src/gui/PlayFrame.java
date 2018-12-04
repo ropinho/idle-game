@@ -1,25 +1,17 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-import util.Bag;
-
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Point;
 
 public class PlayFrame extends JFrame {
 
@@ -37,11 +29,10 @@ public class PlayFrame extends JFrame {
 	private JPanel mainContainer;
 	private JTabbedPane multiAbas;
 	private static JPanel panelCharacter, panelBag, panelPlay, panelSettings, auxPanel;
-	private static MenuGroup belowConsoleMenu, characterMenu;
 	
-	private static final Font CONSOLE_FONT = new Font("Ubuntu Mono", Font.PLAIN, 18);
+	private static final Font CONSOLE_FONT = new Font("Ubuntu", Font.PLAIN, 18);
 	private static final Font INFO_FONT = new Font("Arial", Font.PLAIN, 18);
-	private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
+	//private static final Font INFO_FONT_BOLD = new Font("Arial", Font.BOLD, 18);
 	
 
 	/**
@@ -59,7 +50,6 @@ public class PlayFrame extends JFrame {
 					frame.setVisible(true);
 					frame.idle = new Controller();
 					
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -72,7 +62,7 @@ public class PlayFrame extends JFrame {
 	 */
 	public PlayFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(150, 100, 920, 640);
+		setBounds(250, 100, 920, 640);
 		setTitle("World of Idle");
 		mainContainer = new JPanel();
 		mainContainer.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,11 +86,12 @@ public class PlayFrame extends JFrame {
 		panelPlay.add(scroll);
 		
 		
-		// Character tab ###################################//
+		// Character tab ###################################################//
 		auxPanel = new JPanel();
 		auxPanel.setLayout(new GridLayout(1,3));
 		JScrollPane scrollCh = new JScrollPane(auxPanel);
 		panelCharacter.add(scrollCh);
+		
 		
 		/* adding all tabs */
 		multiAbas.add("Personagem", panelCharacter);
@@ -121,6 +112,7 @@ public class PlayFrame extends JFrame {
 			textArea[i].setBounds(0,0, 64, 72);
 			//textArea[i].setBorder(BorderFactory.createLineBorder(Color.black, 1));
 		}
+		panelCharacter.add(new CharacterTab());
 
 		updateCharacterInfo();
 		auxPanel.add(textArea[0]);

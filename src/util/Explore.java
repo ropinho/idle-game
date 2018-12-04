@@ -5,6 +5,7 @@ import item.Item;
 import out.Console;
 import personagem.*;
 import util.Battle1v1;
+import java.lang.Math;
 
 import map.Map;
 import util.Creator;
@@ -23,6 +24,7 @@ public class Explore extends java.lang.Thread {
 	
 	@Override
 	public void run() {
+		
 		int i=0;
 		
 		while(true) {
@@ -32,6 +34,7 @@ public class Explore extends java.lang.Thread {
 			Console.print("Fase: " + map.getFase() + " - Nivel: " + map.getLevel() + "  Explorando...");
 			
 			if (++i % 5 == 0) {
+				
 				ENEMY = Creator.generateEnemy(HERO.getLevel() + (int)Math.random()*2); // cria inimigo do nível do herói
 				Console.print(HERO.getName() + " encontrou um inimigo "+ ENEMY.getName() + " level "+ ENEMY.getLevel());
 				
@@ -39,6 +42,12 @@ public class Explore extends java.lang.Thread {
 				battle.start();
 				
 				if (battle.winner() == HERO) {
+					int n = ENEMY.getLevel(); // calcula experiencia
+					int xp = 100*n + (int)1.5*n*n + 630 * (int)(Math.pow(n, 4));
+					/* Encontrado em:
+					 * https://www.wakfu.com/pt/forum/16-discussoes-gerais-interesse-geral/7098-
+					 * como-feito-o-calculo-experiencia-necessaria-passar-nivel */
+
 					Console.printEndOfBattle(HERO);
 					Console.printIncreaseXP( HERO.getHp() + ENEMY.getLevel() );
 					HERO.increaseExperience( HERO.getHp() + ENEMY.getLevel() ); // ganha/incrementa XP
