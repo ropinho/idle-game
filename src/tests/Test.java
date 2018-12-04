@@ -13,8 +13,10 @@ public class Test {
   private static Item itens;
   public static void main(String args[]){
 	  
-	  mapa = Creator.creatorMap(2);
+	  mapa = Creator.creatorMap(1);
+	  
 	  System.out.println("Fase: " + mapa.getFase());
+	  System.out.println("Level: " + mapa.getLevel());
 	  
 	  itens = Creator.generateEquipment(mapa.getLevel(), "s");
 	  
