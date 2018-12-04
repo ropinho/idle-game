@@ -96,12 +96,12 @@ public abstract class Creator {
     
     }
 	
-	public static Item generateEquipment(String characterClass){
+	public static Item generateEquipment(int level, String characterClass){
 		BufferedReader buff;
 
 		List<String[]> listEquipment = new ArrayList<String[]>();
 		String line;
-		String[] data = new String[7]; //Como vai ficar dividida a string
+		String[] data = new String[7]; //Separação das String
 
 		try{
 			//Open archive
@@ -114,8 +114,10 @@ public abstract class Creator {
 				if(line == null) break;
 
 				data = line.split(",");
-
-				if(characterClass.equals(data[2])) listEquipment.add(data); //Verifica se o item é da classe do personagem
+				
+				//Level seria da fase que ele está e não do personagem
+				if(level > Integer.parseInt(data[1])) // Verifica se o level da fase é maior que o level do item
+					if(characterClass.equals(data[2])  || "x" == data[2]) listEquipment.add(data); //Verifica se o item é da classe do personagem ou se é uma poção
 			}
 
 			buff.close();
@@ -139,7 +141,7 @@ public abstract class Creator {
 		BufferedReader buff;
 	
 		String line;
-		String[] data = new String[6]; //Como vai ficar dividida a string
+		String[] data = new String[6]; //Separação das String
 	
 		try{
 			//Open archive
